@@ -3,13 +3,12 @@
     <div class="flex justify-between items-start mb-4">
       <div class="flex-1 flex items-center">
         <h2 class="text-xl font-semibold text-gray-800" id="loanTitle">
-          {{ user().name }} #{{ user().id }}
+          {{ client().name }} #{{ client().id }}
           <span class="inline-flex items-center px-3 py-1 mt-2 text-sm rounded-full"
                 [ngClass]="getStatusClass()">{{ 'active' }}
           </span>
         </h2>
-        <!-- Edit User Button -->
-        <button (click)="editUser()"
+        <button (click)="editClient()"
                 class="ml-2 p-1 text-gray-500 hover:text-blue-500 transition duration-300 ease-in-out">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -19,8 +18,8 @@
     </div>
     <div class="relative">
       <div class="flex flex-row w-full gap-4 items-center overflow-x-auto pb-4">
-        @for (loan of user().loans; track user().id) {
-          <button class="flex-shrink-0" (click)="openLoanDetail()">
+        @for (loan of client().loans; track client().id) {
+          <button class="flex-shrink-0" (click)="viewLoanDetails(loan)">
             <div [ngClass]="{
               'border-red-500': loan.status === 'overdue',
               'border-green-500': loan.status !== 'overdue'
@@ -39,9 +38,7 @@
           </button>
         }
       </div>
-
-      <!-- New Loan Button (Fixed) -->
-      <button (click)="createNewLoan()"
+      <button (click)="createLoan()"
               class="absolute right-0 top-1/2 -translate-y-1/2 p-2 bg-white rounded-full shadow-md text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out"
               aria-label="Add new loan">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">

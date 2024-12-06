@@ -1,5 +1,7 @@
-import {Component, EventEmitter, input, Output} from '@angular/core';
-import {CurrencyPipe, DatePipe, NgClass, NgIf} from '@angular/common';
+import {Component, input, output} from '@angular/core';
+import {CurrencyPipe, DatePipe, NgClass} from '@angular/common';
+import {Loan, Client} from '../loan-card.component.models';
+
 
 @Component({
   selector: 'app-loan-card',
@@ -11,26 +13,11 @@ import {CurrencyPipe, DatePipe, NgClass, NgIf} from '@angular/common';
   templateUrl: './loan-card.component.html'
 })
 export class LoanCardComponent {
-  user = input<User>({
-    id: 1,
-    name: "warren",
-    loans: [
-      {
-        id: 1,
+  client = input.required<Client>();
 
-        amount: 10000,
-        interestRate: 5.5,
-        duration: 12,
-        monthlyPayment: 856.75,
-        status: 'active',
-        progressPercentage: 65,
-        date: new Date(),
-      }
-    ]
-  });
-
-  @Output() paymentClick = new EventEmitter<number>();
-  @Output() viewDetailsClick = new EventEmitter<number>();
+  onEditClient = output<Client>()
+  onViewLoanDetails = output<Loan>()
+  onCreateLoan = output()
 
   getStatusClass(): string {
     const statusClasses = {
@@ -41,41 +28,17 @@ export class LoanCardComponent {
     return statusClasses['paid'] || '';
   }
 
-  makePayment(loan: Loan): void {
-    this.paymentClick.emit(loan.id);
+
+  createLoan(): void {
+    this.onCreateLoan.emit()
   }
 
-  viewDetails(loan: Loan): void {
-    this.viewDetailsClick.emit(loan.id);
-  }
-  createNewLoan(): void {
-    console.log({open:"CreateNewLoan"})
+  editClient() {
+    this.onEditClient.emit(this.client())
   }
 
-  editUser() {
-
+  viewLoanDetails(loan:Loan) {
+    this.onViewLoanDetails.emit(loan);
   }
-
-  openLoanDetail() {
-    console.log({open:"OpenLoanDetail"})
-  }
-
-  protected readonly open = open;
 }
 
-export interface User {
-  id: number,
-  name: string,
-  loans: Loan[]
-}
-
-export interface Loan {
-  id: number;
-  amount: number;
-  interestRate: number;
-  duration: number;
-  monthlyPayment: number;
-  status: 'active' | 'overdue' | 'paid';
-  progressPercentage: number;
-  date: Date;
-}

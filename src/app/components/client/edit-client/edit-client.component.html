@@ -1,0 +1,72 @@
+<div class="w-full max-w-md mx-auto bg-white rounded-xl shadow-md p-6" data-testid="edit-client-container">
+  <h2 class="text-2xl font-semibold text-gray-800 mb-6" data-testid="edit-client-title">
+    Editar Cliente "{{ clientData().name }}"
+  </h2>
+  <form [formGroup]="editClientForm" (ngSubmit)="onSubmit()" class="space-y-4" data-testid="edit-client-form">
+
+    <!-- Etiquetas -->
+    <div data-testid="client-tags-container" class="overflow-x-auto " >
+      <mat-button-toggle-group  appearance="standard" formControlName="tags" multiple data-testid="client-tags-buttons">
+        <mat-button-toggle *ngFor="let tag of availableTags()" [value]="tag">
+          {{ tag }}
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+      <p *ngIf="editClientForm.get('tags')?.invalid && editClientForm.get('tags')?.touched"
+         class="mt-1 text-sm text-red-600" data-testid="client-tags-error">Debe seleccionar al menos una etiqueta.</p>
+    </div>
+
+    <!-- Nombre -->
+    <div data-testid="client-name-container">
+      <label for="name" class="block text-sm font-medium text-gray-700" data-testid="client-name-label">Nombre</label>
+      <input type="text" id="name" formControlName="name"
+             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+             data-testid="client-name-input">
+      <p *ngIf="editClientForm.get('name')?.invalid && editClientForm.get('name')?.touched"
+         class="mt-1 text-sm text-red-600" data-testid="client-name-error">El nombre es requerido.</p>
+    </div>
+
+    <!-- Alias -->
+    <div data-testid="client-alias-container">
+      <label for="alias" class="block text-sm font-medium text-gray-700" data-testid="client-alias-label">Alias</label>
+      <input type="text" id="alias" formControlName="alias"
+             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+             data-testid="client-alias-input">
+      <p *ngIf="editClientForm.get('alias')?.invalid && editClientForm.get('alias')?.touched"
+         class="mt-1 text-sm text-red-600" data-testid="client-alias-error">El alias es requerido.</p>
+    </div>
+
+    <!-- DNI -->
+    <div data-testid="client-dni-container">
+      <label for="dni" class="block text-sm font-medium text-gray-700" data-testid="client-dni-label">DNI</label>
+      <input type="text" id="dni" formControlName="dni"
+             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+             data-testid="client-dni-input">
+      <p *ngIf="editClientForm.get('dni')?.invalid && editClientForm.get('dni')?.touched"
+         class="mt-1 text-sm text-red-600" data-testid="client-dni-error">El DNI es requerido.</p>
+    </div>
+
+    <!-- Celular -->
+    <div data-testid="client-cellphone-container">
+      <label for="cellphone" class="block text-sm font-medium text-gray-700" data-testid="client-cellphone-label">Celular</label>
+      <input type="text" id="cellphone" formControlName="cellphone"
+             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+             data-testid="client-cellphone-input">
+      <p *ngIf="editClientForm.get('cellphone')?.invalid && editClientForm.get('cellphone')?.touched"
+         class="mt-1 text-sm text-red-600" data-testid="client-cellphone-error">El celular es requerido.</p>
+    </div>
+
+
+    <!-- Botones -->
+    <div class="mt-6 flex justify-end space-x-3">
+      <button type="button" (click)="onCancel()"
+              class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        Cancelar
+      </button>
+      <button type="submit"
+              class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              [disabled]="editClientForm.invalid">
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>

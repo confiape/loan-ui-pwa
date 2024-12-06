@@ -2,143 +2,23 @@
     "pipes": [],
     "interfaces": [
         {
-            "name": "Loan",
-            "id": "interface-Loan-493e40461a04fe043ebdcd8d5f36207e37809392bf94fdf52bab4a6b90c648596f067cf767c2a6131e2380d442ded3df139f3518fe7272a4b13df58a8137cb46",
-            "file": "src/app/components/loan/loan-card/loan-card.component.ts",
+            "name": "Client",
+            "id": "interface-Client-660e38455d00bbde7beb7a54b07bb95004b652d5d885fa54370d4d559234d93a91d65bf9e895b63c0f3c19a3ec25c08feae0bc4cad3664cfa985b00f49b360a5",
+            "file": "src/app/components/loan/loan-card.component.models.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import {Component, EventEmitter, input, Output} from '@angular/core';\nimport {CurrencyPipe, DatePipe, NgClass, NgIf} from '@angular/common';\n\n@Component({\n  selector: 'app-loan-card',\n  imports: [\n    NgClass,\n    CurrencyPipe,\n    DatePipe\n  ],\n  templateUrl: './loan-card.component.html'\n})\nexport class LoanCardComponent {\n  user = input<User>({\n    id: 1,\n    name: \"warren\",\n    loans: [\n      {\n        id: 1,\n\n        amount: 10000,\n        interestRate: 5.5,\n        duration: 12,\n        monthlyPayment: 856.75,\n        status: 'active',\n        progressPercentage: 65,\n        date: new Date(),\n      }\n    ]\n  });\n\n  @Output() paymentClick = new EventEmitter<number>();\n  @Output() viewDetailsClick = new EventEmitter<number>();\n\n  getStatusClass(): string {\n    const statusClasses = {\n      'active': 'bg-green-100 text-green-800',\n      'overdue': 'bg-red-100 text-red-800',\n      'paid': 'bg-gray-100 text-gray-800'\n    };\n    return statusClasses['paid'] || '';\n  }\n\n  makePayment(loan: Loan): void {\n    this.paymentClick.emit(loan.id);\n  }\n\n  viewDetails(loan: Loan): void {\n    this.viewDetailsClick.emit(loan.id);\n  }\n  createNewLoan(): void {\n    console.log({open:\"CreateNewLoan\"})\n  }\n\n  editUser() {\n\n  }\n\n  openLoanDetail() {\n    console.log({open:\"OpenLoanDetail\"})\n  }\n\n  protected readonly open = open;\n}\n\nexport interface User {\n  id: number,\n  name: string,\n  loans: Loan[]\n}\n\nexport interface Loan {\n  id: number;\n  amount: number;\n  interestRate: number;\n  duration: number;\n  monthlyPayment: number;\n  status: 'active' | 'overdue' | 'paid';\n  progressPercentage: number;\n  date: Date;\n}\n",
+            "sourceCode": "export interface Client {\n  id: number,\n  name: string,\n  loans: Loan[]\n}\n\nexport interface Loan {\n  id: number;\n  amount: number;\n  interestRate: number;\n  duration: number;\n  monthlyPayment: number;\n  status: 'active' | 'overdue' | 'paid';\n  progressPercentage: number;\n  date: Date;\n}\n\nexport interface NewLoan {\n  amount: number;\n  interestRate: number;\n  duration: number;\n  loanType: string;\n}\n\nexport interface EditClient {\n  name: string;\n  alias: string;\n  dni: string;\n  cellphone: string;\n  tags: string[]\n}\n",
             "properties": [
-                {
-                    "name": "amount",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 74
-                },
-                {
-                    "name": "date",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Date",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 80
-                },
-                {
-                    "name": "duration",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 76
-                },
                 {
                     "name": "id",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 73
-                },
-                {
-                    "name": "interestRate",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 75
-                },
-                {
-                    "name": "monthlyPayment",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 77
-                },
-                {
-                    "name": "progressPercentage",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 79
-                },
-                {
-                    "name": "status",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "\"active\" | \"overdue\" | \"paid\"",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 78
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "User",
-            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
-            "file": "src/stories/user.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface User {\n  name: string;\n}\n",
-            "properties": [
-                {
-                    "name": "name",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
                     "line": 2
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "User",
-            "id": "interface-User-493e40461a04fe043ebdcd8d5f36207e37809392bf94fdf52bab4a6b90c648596f067cf767c2a6131e2380d442ded3df139f3518fe7272a4b13df58a8137cb46-1",
-            "file": "src/app/components/loan/loan-card/loan-card.component.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "import {Component, EventEmitter, input, Output} from '@angular/core';\nimport {CurrencyPipe, DatePipe, NgClass, NgIf} from '@angular/common';\n\n@Component({\n  selector: 'app-loan-card',\n  imports: [\n    NgClass,\n    CurrencyPipe,\n    DatePipe\n  ],\n  templateUrl: './loan-card.component.html'\n})\nexport class LoanCardComponent {\n  user = input<User>({\n    id: 1,\n    name: \"warren\",\n    loans: [\n      {\n        id: 1,\n\n        amount: 10000,\n        interestRate: 5.5,\n        duration: 12,\n        monthlyPayment: 856.75,\n        status: 'active',\n        progressPercentage: 65,\n        date: new Date(),\n      }\n    ]\n  });\n\n  @Output() paymentClick = new EventEmitter<number>();\n  @Output() viewDetailsClick = new EventEmitter<number>();\n\n  getStatusClass(): string {\n    const statusClasses = {\n      'active': 'bg-green-100 text-green-800',\n      'overdue': 'bg-red-100 text-red-800',\n      'paid': 'bg-gray-100 text-gray-800'\n    };\n    return statusClasses['paid'] || '';\n  }\n\n  makePayment(loan: Loan): void {\n    this.paymentClick.emit(loan.id);\n  }\n\n  viewDetails(loan: Loan): void {\n    this.viewDetailsClick.emit(loan.id);\n  }\n  createNewLoan(): void {\n    console.log({open:\"CreateNewLoan\"})\n  }\n\n  editUser() {\n\n  }\n\n  openLoanDetail() {\n    console.log({open:\"OpenLoanDetail\"})\n  }\n\n  protected readonly open = open;\n}\n\nexport interface User {\n  id: number,\n  name: string,\n  loans: Loan[]\n}\n\nexport interface Loan {\n  id: number;\n  amount: number;\n  interestRate: number;\n  duration: number;\n  monthlyPayment: number;\n  status: 'active' | 'overdue' | 'paid';\n  progressPercentage: number;\n  date: Date;\n}\n",
-            "properties": [
-                {
-                    "name": "id",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "number",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 67
                 },
                 {
                     "name": "loans",
@@ -148,7 +28,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 69
+                    "line": 4
                 },
                 {
                     "name": "name",
@@ -158,16 +38,228 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 68
+                    "line": 3
                 }
             ],
             "indexSignatures": [],
             "kind": 171,
             "methods": [],
-            "extends": [],
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "User-1"
+            "extends": []
+        },
+        {
+            "name": "EditClient",
+            "id": "interface-EditClient-660e38455d00bbde7beb7a54b07bb95004b652d5d885fa54370d4d559234d93a91d65bf9e895b63c0f3c19a3ec25c08feae0bc4cad3664cfa985b00f49b360a5",
+            "file": "src/app/components/loan/loan-card.component.models.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface Client {\n  id: number,\n  name: string,\n  loans: Loan[]\n}\n\nexport interface Loan {\n  id: number;\n  amount: number;\n  interestRate: number;\n  duration: number;\n  monthlyPayment: number;\n  status: 'active' | 'overdue' | 'paid';\n  progressPercentage: number;\n  date: Date;\n}\n\nexport interface NewLoan {\n  amount: number;\n  interestRate: number;\n  duration: number;\n  loanType: string;\n}\n\nexport interface EditClient {\n  name: string;\n  alias: string;\n  dni: string;\n  cellphone: string;\n  tags: string[]\n}\n",
+            "properties": [
+                {
+                    "name": "alias",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "cellphone",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "dni",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "tags",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "Loan",
+            "id": "interface-Loan-660e38455d00bbde7beb7a54b07bb95004b652d5d885fa54370d4d559234d93a91d65bf9e895b63c0f3c19a3ec25c08feae0bc4cad3664cfa985b00f49b360a5",
+            "file": "src/app/components/loan/loan-card.component.models.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface Client {\n  id: number,\n  name: string,\n  loans: Loan[]\n}\n\nexport interface Loan {\n  id: number;\n  amount: number;\n  interestRate: number;\n  duration: number;\n  monthlyPayment: number;\n  status: 'active' | 'overdue' | 'paid';\n  progressPercentage: number;\n  date: Date;\n}\n\nexport interface NewLoan {\n  amount: number;\n  interestRate: number;\n  duration: number;\n  loanType: string;\n}\n\nexport interface EditClient {\n  name: string;\n  alias: string;\n  dni: string;\n  cellphone: string;\n  tags: string[]\n}\n",
+            "properties": [
+                {
+                    "name": "amount",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "date",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Date",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "duration",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "interestRate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "monthlyPayment",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "progressPercentage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "status",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"active\" | \"overdue\" | \"paid\"",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "NewLoan",
+            "id": "interface-NewLoan-660e38455d00bbde7beb7a54b07bb95004b652d5d885fa54370d4d559234d93a91d65bf9e895b63c0f3c19a3ec25c08feae0bc4cad3664cfa985b00f49b360a5",
+            "file": "src/app/components/loan/loan-card.component.models.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface Client {\n  id: number,\n  name: string,\n  loans: Loan[]\n}\n\nexport interface Loan {\n  id: number;\n  amount: number;\n  interestRate: number;\n  duration: number;\n  monthlyPayment: number;\n  status: 'active' | 'overdue' | 'paid';\n  progressPercentage: number;\n  date: Date;\n}\n\nexport interface NewLoan {\n  amount: number;\n  interestRate: number;\n  duration: number;\n  loanType: string;\n}\n\nexport interface EditClient {\n  name: string;\n  alias: string;\n  dni: string;\n  cellphone: string;\n  tags: string[]\n}\n",
+            "properties": [
+                {
+                    "name": "amount",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "duration",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "interestRate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "loanType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
         }
     ],
     "injectables": [],
@@ -178,7 +270,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-1662c7059974e3ef34d1710a07465263af2fa72e86dde485a938ab8a85c07bb31590af5fe81a6eadbdd791bad60f229cbc05af425d649a60cce2ffb9f3fd6c55",
+            "id": "component-AppComponent-272e66f86a8115fd091a4d758c8177892aa44073d236f56aacaa323ad5a4ab03866b3ffe55b6dec85ee8264c913862ba055e2efe8d1b7c85239dfd717484e862",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -197,6 +289,17 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
+                    "name": "clientData",
+                    "defaultValue": "{\n    name: 'warren',\n    alias: 'aroni',\n    dni: '4772445',\n    cellphone: '937373210',\n    tags: [\"wa\"]\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "EditClient",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
                     "name": "title",
                     "defaultValue": "'confiape-loans-ui'",
                     "deprecated": false,
@@ -205,7 +308,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 12
+                    "line": 15
                 }
             ],
             "methodsClass": [],
@@ -216,247 +319,404 @@
             "standalone": false,
             "imports": [
                 {
-                    "name": "RouterOutlet"
+                    "name": "CreateLoanComponent",
+                    "type": "component"
                 },
                 {
-                    "name": "LoanCardComponent",
+                    "name": "EditClientComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport {LoanCardComponent} from './components/loan/loan-card/loan-card.component';\n\n@Component({\n  selector: 'app-root',\n  imports: [RouterOutlet, LoanCardComponent],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss'\n})\nexport class AppComponent {\n  title = 'confiape-loans-ui';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport {LoanCardComponent} from './components/loan/loan-card/loan-card.component';\nimport {CreateLoanComponent} from './components/loan/create-loan/create-loan.component';\nimport {EditClientComponent} from './components/client/edit-client/edit-client.component';\nimport {EditClient} from './components/loan/loan-card.component.models';\n\n@Component({\n  selector: 'app-root',\n  imports: [CreateLoanComponent, EditClientComponent],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss'\n})\nexport class AppComponent {\n  title = 'confiape-loans-ui';\n  clientData: EditClient = {\n    name: 'warren',\n    alias: 'aroni',\n    dni: '4772445',\n    cellphone: '937373210',\n    tags: [\"wa\"]\n  };\n}\n",
             "styleUrl": "./app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<app-loan-card/>\n"
+            "templateData": "<app-create-loan [clientId]=\"'a'\" [clientName]=\"'ware'\"></app-create-loan>\n<app-edit-client [clientData]=\"clientData\"></app-edit-client>\n"
         },
         {
-            "name": "ButtonComponent",
-            "id": "component-ButtonComponent-d7bf0323e6da130e2609e2af0117b4a8d7cd874132206af50bf43dfc37044485fe50f2867ea76525730dd195b9b95a43802a12dadc6ad5cd7bf2faa07f19f0da",
-            "file": "src/stories/button.component.ts",
+            "name": "CreateLoanComponent",
+            "id": "component-CreateLoanComponent-2a8d040a0b0742a22af7547506ac7fce6d2d6ef5839384acc443499a1080d3413857c331ff8749e26b825d476174b00b470a9270d4acd1ff9acda6d7e09f2513",
+            "file": "src/app/components/loan/create-loan/create-loan.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "storybook-button",
-            "styleUrls": [
-                "./button.css"
-            ],
+            "selector": "app-create-loan",
+            "styleUrls": [],
             "styles": [],
-            "template": " <button  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>",
-            "templateUrl": [],
+            "templateUrl": [
+                "./create-loan.component.html"
+            ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "backgroundColor",
+                    "name": "clientId",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nWhat background color to use",
-                    "description": "<p>What background color to use</p>\n",
-                    "line": 25,
-                    "type": "string",
-                    "decorators": []
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "required": true
                 },
                 {
-                    "name": "label",
-                    "defaultValue": "'Button'",
+                    "name": "clientName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "pos": 760,
-                            "end": 773,
-                            "kind": 327,
-                            "id": 0,
-                            "flags": 16842752,
-                            "modifierFlagsCache": 0,
-                            "transformFlags": 0,
-                            "tagName": {
-                                "pos": 761,
-                                "end": 769,
-                                "kind": 80,
-                                "id": 0,
-                                "flags": 16842752,
-                                "transformFlags": 0,
-                                "escapedText": "required"
-                            },
-                            "comment": ""
-                        }
-                    ],
-                    "rawdescription": "\n\nButton contents\n\n",
-                    "description": "<p>Button contents</p>\n",
-                    "line": 37,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "primary",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nIs this the principal call to action on the page?",
-                    "description": "<p>Is this the principal call to action on the page?</p>\n",
-                    "line": 21,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "size",
-                    "defaultValue": "'medium'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "rawdescription": "\nHow large should the button be?",
-                    "description": "<p>How large should the button be?</p>\n",
-                    "line": 29,
-                    "type": "\"small\" | \"medium\" | \"large\"",
-                    "decorators": []
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "required": true
                 }
             ],
-            "outputsClass": [
+            "outputsClass": [],
+            "propertiesClass": [
                 {
-                    "name": "onClick",
-                    "defaultValue": "new EventEmitter<Event>()",
+                    "name": "clientId",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "rawdescription": "\nOptional click handler",
-                    "description": "<p>Optional click handler</p>\n",
-                    "line": 41,
-                    "type": "EventEmitter"
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "required": true
+                },
+                {
+                    "name": "clientName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "required": true
+                },
+                {
+                    "name": "loanForm",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "onLoanCreate",
+                    "defaultValue": "output<{ loan: NewLoan, id: string }>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
                 }
             ],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onCancel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "ReactiveFormsModule",
                     "type": "module"
+                },
+                {
+                    "name": "NgIf"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n  type=\"button\"\n  (click)=\"onClick.emit($event)\"\n  [ngClass]=\"classes\"\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\n>\n  {{ label }}\n</button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /** Is this the principal call to action on the page? */\n  @Input()\n  primary = false;\n\n  /** What background color to use */\n  @Input()\n  backgroundColor?: string;\n\n  /** How large should the button be? */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /** Optional click handler */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "sourceCode": "import {Component, input, OnInit, output} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {NgIf} from '@angular/common';\nimport {NewLoan} from '../loan-card.component.models';\n\n@Component({\n  selector: 'app-create-loan',\n  imports: [\n    ReactiveFormsModule,\n    NgIf\n  ],\n  templateUrl: './create-loan.component.html'\n})\nexport class CreateLoanComponent implements OnInit {\n  loanForm!: FormGroup;\n  clientName = input.required<string>();\n  clientId = input.required<string>();\n\n  onLoanCreate = output<{ loan: NewLoan, id: string }>()\n\n  constructor(private fb: FormBuilder) {\n  }\n\n  ngOnInit() {\n    this.loanForm = this.fb.group({\n      amount: ['', [Validators.required, Validators.min(0)]],\n      date: ['', Validators.required],\n      duration: ['27', [Validators.required, Validators.min(1)]],\n      interestRate: ['8.4', [Validators.required, Validators.min(0), Validators.max(100)]],\n      loanType: ['daily', Validators.required],\n    });\n  }\n\n  onSubmit() {\n    if (this.loanForm.valid) {\n      this.onLoanCreate.emit({\n        id: this.clientId(),\n        loan: this.loanForm.value\n      })\n    }\n  }\n\n  onCancel() {\n\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-button {\n  display: inline-block;\n  cursor: pointer;\n  border: 0;\n  border-radius: 3em;\n  font-weight: 700;\n  line-height: 1;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n.storybook-button--primary {\n  background-color: #1ea7fd;\n  color: white;\n}\n.storybook-button--secondary {\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n  background-color: transparent;\n  color: #333;\n}\n.storybook-button--small {\n  padding: 10px 16px;\n  font-size: 12px;\n}\n.storybook-button--medium {\n  padding: 11px 20px;\n  font-size: 14px;\n}\n.storybook-button--large {\n  padding: 12px 24px;\n  font-size: 16px;\n}\n",
-                    "styleUrl": "./button.css"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
-            "extends": [],
-            "accessors": {
-                "classes": {
-                    "name": "classes",
-                    "getSignature": {
-                        "name": "classes",
-                        "type": "[]",
-                        "returnType": "string[]",
-                        "line": 43
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
                     }
-                }
-            }
+                ],
+                "line": 19,
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"w-full max-w-md mx-auto bg-white rounded-xl shadow-md p-6\" data-testid=\"loan-container\">\n  <h2 class=\"text-2xl font-semibold text-gray-800 mb-6\" data-testid=\"create-loan-title\">Nuevo Prestamo\n    para \"{{ clientName() }}\"</h2>\n  <form [formGroup]=\"loanForm\" (ngSubmit)=\"onSubmit()\" class=\"space-y-4\" data-testid=\"loan-form\">\n    <div data-testid=\"loan-amount-container\">\n      <label for=\"amount\" class=\"block text-sm font-medium text-gray-700\" data-testid=\"loan-amount-label\">Monto</label>\n      <input type=\"number\" id=\"amount\" formControlName=\"amount\"\n             class=\"mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50\"\n             data-testid=\"loan-amount-input\">\n      <p *ngIf=\"loanForm.get('amount')?.invalid && loanForm.get('amount')?.touched\"\n         class=\"mt-1 text-sm text-red-600\" data-testid=\"loan-amount-error\">El monto debe de ser un numero mayor a 0.</p>\n    </div>\n\n    <div data-testid=\"loan-interest-rate-container\">\n      <label for=\"interestRate\" class=\"block text-sm font-medium text-gray-700\" data-testid=\"loan-interest-rate-label\">Interes (%)</label>\n      <input type=\"number\" id=\"interestRate\" formControlName=\"interestRate\"\n             class=\"mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50\"\n             data-testid=\"loan-interest-rate-input\">\n      <p *ngIf=\"loanForm.get('interestRate')?.invalid && loanForm.get('interestRate')?.touched\"\n         class=\"mt-1 text-sm text-red-600\" data-testid=\"loan-interest-rate-error\">El interes es requerido y debe ser un numero entre 0 y 100</p>\n    </div>\n\n    <div data-testid=\"loan-duration-container\">\n      <label for=\"duration\" class=\"block text-sm font-medium text-gray-700\" data-testid=\"loan-duration-label\">Numero de dias</label>\n      <input type=\"number\" id=\"duration\" formControlName=\"duration\"\n             class=\"mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50\"\n             data-testid=\"loan-duration-input\">\n      <p *ngIf=\"loanForm.get('duration')?.invalid && loanForm.get('duration')?.touched\"\n         class=\"mt-1 text-sm text-red-600\" data-testid=\"loan-duration-error\">El numero de dias debe ser correcto</p>\n    </div>\n\n\n\n    <div data-testid=\"loan-type-container\">\n      <label class=\"block text-sm font-medium text-gray-700\" data-testid=\"loan-type-label\">Tipo de préstamo</label>\n      <div class=\"mt-2 space-y-2\">\n        <div>\n          <input type=\"radio\" id=\"daily\" formControlName=\"loanType\" value=\"daily\"\n                 class=\"mr-2 focus:ring focus:ring-blue-300 focus:ring-opacity-50\"\n                 data-testid=\"loan-type-daily\">\n          <label for=\"daily\" class=\"text-sm font-medium text-gray-700\">Diario</label>\n        </div>\n        <div>\n          <input type=\"radio\" id=\"weekly\" formControlName=\"loanType\" value=\"weekly\"\n                 class=\"mr-2 focus:ring focus:ring-blue-300 focus:ring-opacity-50\"\n                 data-testid=\"loan-type-weekly\">\n          <label for=\"weekly\" class=\"text-sm font-medium text-gray-700\">Semanal</label>\n        </div>\n        <div>\n          <input type=\"radio\" id=\"monthly\" formControlName=\"loanType\" value=\"monthly\"\n                 class=\"mr-2 focus:ring focus:ring-blue-300 focus:ring-opacity-50\"\n                 data-testid=\"loan-type-monthly\">\n          <label for=\"monthly\" class=\"text-sm font-medium text-gray-700\">Mensual</label>\n        </div>\n      </div>\n      <p *ngIf=\"loanForm.get('loanType')?.invalid && loanForm.get('loanType')?.touched\"\n         class=\"mt-1 text-sm text-red-600\" data-testid=\"loan-type-error\">Debe seleccionar un tipo de préstamo.</p>\n    </div>\n\n    <div class=\"mt-6 flex justify-end space-x-3\">\n      <button type=\"button\" (click)=\"onCancel()\"\n              class=\"px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500\">\n        Cancelar\n      </button>\n      <button type=\"submit\"\n              class=\"px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500\"\n              [disabled]=\"loanForm.invalid\">\n        Crear Prestamo\n      </button>\n    </div>\n\n<!--    <button type=\"submit\"-->\n<!--            [disabled]=\"loanForm.invalid\"-->\n<!--            class=\"w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50\"-->\n<!--            data-testid=\"create-loan-button\">-->\n<!--      Crear Prestamo-->\n<!--    </button>-->\n  </form>\n</div>\n\n\n\n\n\n<!--    <div data-testid=\"loan-date-container\">-->\n<!--      <label for=\"date\" class=\"block text-sm font-medium text-gray-700\" data-testid=\"loan-date-label\">Fecha</label>-->\n<!--      <input type=\"date\" id=\"date\" formControlName=\"date\"-->\n<!--             class=\"mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50\"-->\n<!--             data-testid=\"loan-date-input\">-->\n<!--      <p *ngIf=\"loanForm.get('date')?.invalid && loanForm.get('date')?.touched\"-->\n<!--         class=\"mt-1 text-sm text-red-600\" data-testid=\"loan-date-error\">Date is required.</p>-->\n<!--    </div>-->\n"
         },
         {
-            "name": "HeaderComponent",
-            "id": "component-HeaderComponent-48b9abe37706bc42f20cfa97ed9f943678344ea7d254c0c82183c657750c2191b43486fe730c778627b2ea6aa0e2f33a7abcf3ce08b68ad18b062ad99ea97acb",
-            "file": "src/stories/header.component.ts",
+            "name": "EditClientComponent",
+            "id": "component-EditClientComponent-e7088fd877ed48b37d22f11436d26a6fd9b8a4cb09fd31dd6e5bb14fbed306182fe6346cce895d8c43d137e38b5894b766abe8f210053f121748592b04480f0a",
+            "file": "src/app/components/client/edit-client/edit-client.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "storybook-header",
-            "styleUrls": [
-                "./header.css"
-            ],
+            "selector": "app-edit-client",
+            "styleUrls": [],
             "styles": [],
-            "template": "<header>  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>",
-            "templateUrl": [],
+            "templateUrl": [
+                "./edit-client.component.html"
+            ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "user",
-                    "defaultValue": "null",
+                    "name": "clientData",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 66,
-                    "type": "User | null",
-                    "decorators": []
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "required": true
                 }
             ],
             "outputsClass": [
                 {
-                    "name": "onCreateAccount",
-                    "defaultValue": "new EventEmitter<Event>()",
+                    "name": "onCancelEdit",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 75,
-                    "type": "EventEmitter"
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "required": false
                 },
                 {
-                    "name": "onLogin",
-                    "defaultValue": "new EventEmitter<Event>()",
+                    "name": "onEditClient",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 69,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "onLogout",
-                    "defaultValue": "new EventEmitter<Event>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 72,
-                    "type": "EventEmitter"
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "required": false
                 }
             ],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "availableTags",
+                    "defaultValue": "input.required<string[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "clientData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "required": true
+                },
+                {
+                    "name": "editClientForm",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "FormGroup",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "onCancelEdit",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "required": false
+                },
+                {
+                    "name": "onEditClient",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "required": false
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 32,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onCancel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
-            "standalone": true,
+            "standalone": false,
             "imports": [
                 {
-                    "name": "CommonModule",
+                    "name": "ReactiveFormsModule",
                     "type": "module"
                 },
                 {
-                    "name": "ButtonComponent",
-                    "type": "component"
+                    "name": "NgIf"
+                },
+                {
+                    "name": "NgForOf"
+                },
+                {
+                    "name": "MatButtonToggleGroup"
+                },
+                {
+                    "name": "MatButtonToggle"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n  <div class=\"storybook-header\">\n    <div>\n      <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n            fill=\"#FFF\"\n          />\n          <path\n            d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n            fill=\"#555AB9\"\n          />\n          <path d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\" fill=\"#91BAF8\" />\n        </g>\n      </svg>\n      <h1>Acme</h1>\n    </div>\n    <div>\n      <div *ngIf=\"user\">\n        <span class=\"welcome\">\n          Welcome, <b>{{ user.name }}</b\n          >!\n        </span>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n      </div>\n      <div *ngIf=\"!user\">\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          class=\"margin-left\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          [primary]=\"true\"\n          class=\"margin-left\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </div>\n</header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "sourceCode": "import {Component, input, OnInit, output} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {EditClient} from '../../loan/loan-card.component.models';\nimport {NgForOf, NgIf} from '@angular/common';\nimport {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';\n\n@Component({\n  selector: 'app-edit-client',\n  imports: [\n    ReactiveFormsModule,\n    NgIf,\n    NgForOf,\n    MatButtonToggleGroup,\n    MatButtonToggle\n  ],\n  templateUrl: './edit-client.component.html',\n\n\n})\nexport class EditClientComponent implements OnInit {\n  clientData = input.required<EditClient>();\n  availableTags = input.required<string[]>();\n\n  onEditClient = output<EditClient>();\n  onCancelEdit = output();\n  editClientForm!: FormGroup;\n\n\n  constructor(private fb: FormBuilder) {\n  }\n\n  ngOnInit() {\n    this.editClientForm = this.fb.group({\n      name: [this.clientData().name || '', [Validators.required]],\n      alias: [this.clientData().alias || ''],\n      dni: [this.clientData().dni || '', [Validators.required]],\n      cellphone: [this.clientData().cellphone || ''],\n      tags: [this.clientData().tags || [], Validators.required],\n    });\n  }\n\n  onSubmit() {\n    if (this.editClientForm.valid) {\n      this.onEditClient.emit(this.editClientForm.value);\n    }\n  }\n\n  onCancel() {\n    this.onCancelEdit.emit();\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 6px 0 6px 10px;\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  margin-right: 10px;\n  color: #333;\n  font-size: 14px;\n}\n",
-                    "styleUrl": "./header.css"
-                }
-            ],
+            "styleUrlsData": "",
             "stylesData": "",
-            "extends": []
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 26,
+                "jsdoctags": [
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"w-full max-w-md mx-auto bg-white rounded-xl shadow-md p-6\" data-testid=\"edit-client-container\">\n  <h2 class=\"text-2xl font-semibold text-gray-800 mb-6\" data-testid=\"edit-client-title\">\n    Editar Cliente \"{{ clientData().name }}\"\n  </h2>\n  <form [formGroup]=\"editClientForm\" (ngSubmit)=\"onSubmit()\" class=\"space-y-4\" data-testid=\"edit-client-form\">\n    <!-- Nombre -->\n    <div data-testid=\"client-name-container\">\n      <label for=\"name\" class=\"block text-sm font-medium text-gray-700\" data-testid=\"client-name-label\">Nombre</label>\n      <input type=\"text\" id=\"name\" formControlName=\"name\"\n             class=\"mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50\"\n             data-testid=\"client-name-input\">\n      <p *ngIf=\"editClientForm.get('name')?.invalid && editClientForm.get('name')?.touched\"\n         class=\"mt-1 text-sm text-red-600\" data-testid=\"client-name-error\">El nombre es requerido.</p>\n    </div>\n\n    <!-- Alias -->\n    <div data-testid=\"client-alias-container\">\n      <label for=\"alias\" class=\"block text-sm font-medium text-gray-700\" data-testid=\"client-alias-label\">Alias</label>\n      <input type=\"text\" id=\"alias\" formControlName=\"alias\"\n             class=\"mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50\"\n             data-testid=\"client-alias-input\">\n      <p *ngIf=\"editClientForm.get('alias')?.invalid && editClientForm.get('alias')?.touched\"\n         class=\"mt-1 text-sm text-red-600\" data-testid=\"client-alias-error\">El alias es requerido.</p>\n    </div>\n\n    <!-- DNI -->\n    <div data-testid=\"client-dni-container\">\n      <label for=\"dni\" class=\"block text-sm font-medium text-gray-700\" data-testid=\"client-dni-label\">DNI</label>\n      <input type=\"text\" id=\"dni\" formControlName=\"dni\"\n             class=\"mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50\"\n             data-testid=\"client-dni-input\">\n      <p *ngIf=\"editClientForm.get('dni')?.invalid && editClientForm.get('dni')?.touched\"\n         class=\"mt-1 text-sm text-red-600\" data-testid=\"client-dni-error\">El DNI es requerido.</p>\n    </div>\n\n    <!-- Celular -->\n    <div data-testid=\"client-cellphone-container\">\n      <label for=\"cellphone\" class=\"block text-sm font-medium text-gray-700\" data-testid=\"client-cellphone-label\">Celular</label>\n      <input type=\"text\" id=\"cellphone\" formControlName=\"cellphone\"\n             class=\"mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50\"\n             data-testid=\"client-cellphone-input\">\n      <p *ngIf=\"editClientForm.get('cellphone')?.invalid && editClientForm.get('cellphone')?.touched\"\n         class=\"mt-1 text-sm text-red-600\" data-testid=\"client-cellphone-error\">El celular es requerido.</p>\n    </div>\n\n    <!-- Etiquetas -->\n    <div data-testid=\"client-tags-container\">\n      <label for=\"tags\" class=\"block text-sm font-medium text-gray-700\" data-testid=\"client-tags-label\">Etiquetas</label>\n      <mat-button-toggle-group id=\"tags\" formControlName=\"tags\" multiple data-testid=\"client-tags-buttons\">\n        <mat-button-toggle *ngFor=\"let tag of availableTags()\" [value]=\"tag\">\n          {{ tag }}\n        </mat-button-toggle>\n      </mat-button-toggle-group>\n      <p *ngIf=\"editClientForm.get('tags')?.invalid && editClientForm.get('tags')?.touched\"\n         class=\"mt-1 text-sm text-red-600\" data-testid=\"client-tags-error\">Debe seleccionar al menos una etiqueta.</p>\n    </div>\n\n    <!-- Botones -->\n    <div class=\"mt-6 flex justify-end space-x-3\">\n      <button type=\"button\" (click)=\"onCancel()\"\n              class=\"px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500\">\n        Cancelar\n      </button>\n      <button type=\"submit\"\n              class=\"px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500\"\n              [disabled]=\"editClientForm.invalid\">\n        Guardar\n      </button>\n    </div>\n  </form>\n</div>\n"
         },
         {
             "name": "LoanCardComponent",
-            "id": "component-LoanCardComponent-493e40461a04fe043ebdcd8d5f36207e37809392bf94fdf52bab4a6b90c648596f067cf767c2a6131e2380d442ded3df139f3518fe7272a4b13df58a8137cb46",
+            "id": "component-LoanCardComponent-51c716f17664304b20f51048a825cf3e073b6830d04b465688386e574f0fc575a73b1de1dd6bc563ba1c24a87a80e523cc36a57398c7df0b42170130552b94eb",
             "file": "src/app/components/loan/loan-card/loan-card.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -471,71 +731,118 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "client",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "required": true
+                }
+            ],
             "outputsClass": [
                 {
-                    "name": "paymentClick",
-                    "defaultValue": "new EventEmitter<number>()",
+                    "name": "onCreateLoan",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 32,
-                    "type": "EventEmitter"
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "required": false
                 },
                 {
-                    "name": "viewDetailsClick",
-                    "defaultValue": "new EventEmitter<number>()",
+                    "name": "onEditClient",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 33,
-                    "type": "EventEmitter"
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "required": false
+                },
+                {
+                    "name": "onViewLoanDetails",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "required": false
                 }
             ],
             "propertiesClass": [
                 {
-                    "name": "open",
-                    "defaultValue": "open",
+                    "name": "client",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 63,
-                    "modifierKind": [
-                        124,
-                        148
-                    ]
+                    "line": 16,
+                    "required": true
                 },
                 {
-                    "name": "user",
-                    "defaultValue": "input<User>({\n    id: 1,\n    name: \"warren\",\n    loans: [\n      {\n        id: 1,\n\n        amount: 10000,\n        interestRate: 5.5,\n        duration: 12,\n        monthlyPayment: 856.75,\n        status: 'active',\n        progressPercentage: 65,\n        date: new Date(),\n      }\n    ]\n  })",
+                    "name": "onCreateLoan",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 20,
+                    "required": false
+                },
+                {
+                    "name": "onEditClient",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "required": false
+                },
+                {
+                    "name": "onViewLoanDetails",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "required": false
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "createNewLoan",
+                    "name": "createLoan",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 51,
+                    "line": 32,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "editUser",
+                    "name": "editClient",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 55,
+                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -545,12 +852,12 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 22,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "makePayment",
+                    "name": "viewLoanDetails",
                     "args": [
                         {
                             "name": "loan",
@@ -562,45 +869,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 44,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "loan",
-                            "type": "Loan",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "openLoanDetail",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 59,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "viewDetails",
-                    "args": [
-                        {
-                            "name": "loan",
-                            "type": "Loan",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 48,
+                    "line": 40,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -637,106 +906,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, input, Output} from '@angular/core';\nimport {CurrencyPipe, DatePipe, NgClass, NgIf} from '@angular/common';\n\n@Component({\n  selector: 'app-loan-card',\n  imports: [\n    NgClass,\n    CurrencyPipe,\n    DatePipe\n  ],\n  templateUrl: './loan-card.component.html'\n})\nexport class LoanCardComponent {\n  user = input<User>({\n    id: 1,\n    name: \"warren\",\n    loans: [\n      {\n        id: 1,\n\n        amount: 10000,\n        interestRate: 5.5,\n        duration: 12,\n        monthlyPayment: 856.75,\n        status: 'active',\n        progressPercentage: 65,\n        date: new Date(),\n      }\n    ]\n  });\n\n  @Output() paymentClick = new EventEmitter<number>();\n  @Output() viewDetailsClick = new EventEmitter<number>();\n\n  getStatusClass(): string {\n    const statusClasses = {\n      'active': 'bg-green-100 text-green-800',\n      'overdue': 'bg-red-100 text-red-800',\n      'paid': 'bg-gray-100 text-gray-800'\n    };\n    return statusClasses['paid'] || '';\n  }\n\n  makePayment(loan: Loan): void {\n    this.paymentClick.emit(loan.id);\n  }\n\n  viewDetails(loan: Loan): void {\n    this.viewDetailsClick.emit(loan.id);\n  }\n  createNewLoan(): void {\n    console.log({open:\"CreateNewLoan\"})\n  }\n\n  editUser() {\n\n  }\n\n  openLoanDetail() {\n    console.log({open:\"OpenLoanDetail\"})\n  }\n\n  protected readonly open = open;\n}\n\nexport interface User {\n  id: number,\n  name: string,\n  loans: Loan[]\n}\n\nexport interface Loan {\n  id: number;\n  amount: number;\n  interestRate: number;\n  duration: number;\n  monthlyPayment: number;\n  status: 'active' | 'overdue' | 'paid';\n  progressPercentage: number;\n  date: Date;\n}\n",
+            "sourceCode": "import {Component, input, output} from '@angular/core';\nimport {CurrencyPipe, DatePipe, NgClass} from '@angular/common';\nimport {Loan, Client} from '../loan-card.component.models';\n\n\n@Component({\n  selector: 'app-loan-card',\n  imports: [\n    NgClass,\n    CurrencyPipe,\n    DatePipe\n  ],\n  templateUrl: './loan-card.component.html'\n})\nexport class LoanCardComponent {\n  client = input.required<Client>();\n\n  onEditClient = output<Client>()\n  onViewLoanDetails = output<Loan>()\n  onCreateLoan = output()\n\n  getStatusClass(): string {\n    const statusClasses = {\n      'active': 'bg-green-100 text-green-800',\n      'overdue': 'bg-red-100 text-red-800',\n      'paid': 'bg-gray-100 text-gray-800'\n    };\n    return statusClasses['paid'] || '';\n  }\n\n\n  createLoan(): void {\n    this.onCreateLoan.emit()\n  }\n\n  editClient() {\n    this.onEditClient.emit(this.client())\n  }\n\n  viewLoanDetails(loan:Loan) {\n    this.onViewLoanDetails.emit(loan);\n  }\n}\n\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"w-full mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-transform duration-300 hover:scale-[1.02] my-4\">\n  <div class=\"p-6\">\n    <div class=\"flex justify-between items-start mb-4\">\n      <div class=\"flex-1 flex items-center\">\n        <h2 class=\"text-xl font-semibold text-gray-800\" id=\"loanTitle\">\n          {{ user().name }} #{{ user().id }}\n          <span class=\"inline-flex items-center px-3 py-1 mt-2 text-sm rounded-full\"\n                [ngClass]=\"getStatusClass()\">{{ 'active' }}\n          </span>\n        </h2>\n        <!-- Edit User Button -->\n        <button (click)=\"editUser()\"\n                class=\"ml-2 p-1 text-gray-500 hover:text-blue-500 transition duration-300 ease-in-out\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" class=\"w-5 h-5\">\n            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z\" />\n          </svg>\n        </button>\n      </div>\n    </div>\n    <div class=\"relative\">\n      <div class=\"flex flex-row w-full gap-4 items-center overflow-x-auto pb-4\">\n        @for (loan of user().loans; track user().id) {\n          <button class=\"flex-shrink-0\" (click)=\"openLoanDetail()\">\n            <div [ngClass]=\"{\n              'border-red-500': loan.status === 'overdue',\n              'border-green-500': loan.status !== 'overdue'\n            }\" class=\"bg-gray-50 font-bold border-l-4 p-3 rounded-lg\">\n              <p class=\"text-lg text-gray-600\">\n                {{ loan.amount | currency }}\n              </p>\n              <p class=\"text-lg font-semibold text-gray-900\">{{ loan.date | date :\"dd MMM\" }}</p>\n              <div class=\"relative pt-1\">\n                <div class=\"overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200\">\n                  <div [style.width.%]=\"loan.progressPercentage\"\n                       class=\"shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 transition-all duration-500\"></div>\n                </div>\n              </div>\n            </div>\n          </button>\n        }\n      </div>\n\n      <!-- New Loan Button (Fixed) -->\n      <button (click)=\"createNewLoan()\"\n              class=\"absolute right-0 top-1/2 -translate-y-1/2 p-2 bg-white rounded-full shadow-md text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out\"\n              aria-label=\"Add new loan\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" class=\"w-6 h-6\">\n          <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 4v16m8-8H4\" />\n        </svg>\n      </button>\n    </div>\n  </div>\n</div>\n\n"
-        },
-        {
-            "name": "PageComponent",
-            "id": "component-PageComponent-21dd6eb370b4983b5c21c84d40e6f54d266a9d9af9889e6e76b35c43058bd53b3e451bad089d5adf4bea46647ba10265a2fa8cb15630398e75636307d4817fc6",
-            "file": "src/stories/page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "storybook-page",
-            "styleUrls": [
-                "./page.css"
-            ],
-            "styles": [],
-            "template": "<article>  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>",
-            "templateUrl": [],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "user",
-                    "defaultValue": "null",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "User | null",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 69
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "doCreateAccount",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 79,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "doLogin",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 75,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "doLogout",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 71,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "CommonModule",
-                    "type": "module"
-                },
-                {
-                    "name": "HeaderComponent",
-                    "type": "component"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n  <storybook-header\n    [user]=\"user\"\n    (onLogout)=\"doLogout()\"\n    (onLogin)=\"doLogin()\"\n    (onCreateAccount)=\"doCreateAccount()\"\n  ></storybook-header>\n  <section class=\"storybook-page\">\n    <h2>Pages in Storybook</h2>\n    <p>\n      We recommend building UIs with a\n      <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n        <strong>component-driven</strong>\n      </a>\n      process starting with atomic components and ending with pages.\n    </p>\n    <p>\n      Render pages with mock data. This makes it easy to build and review page states without\n      needing to navigate to them in your app. Here are some handy patterns for managing page data\n      in Storybook:\n    </p>\n    <ul>\n      <li>\n        Use a higher-level connected component. Storybook helps you compose such data from the\n        \"args\" of child component stories\n      </li>\n      <li>\n        Assemble data in the page component from your services. You can mock these services out\n        using Storybook.\n      </li>\n    </ul>\n    <p>\n      Get a guided tutorial on component-driven development at\n      <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n        Storybook tutorials\n      </a>\n      . Read more in the\n      <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n      .\n    </p>\n    <div class=\"tip-wrapper\">\n      <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n      <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n        <g fill=\"none\" fillRule=\"evenodd\">\n          <path\n            d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n            id=\"a\"\n            fill=\"#999\"\n          />\n        </g>\n      </svg>\n      Viewports addon in the toolbar\n    </div>\n  </section>\n</article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
-            "assetsDirs": [],
-            "styleUrlsData": [
-                {
-                    "data": ".storybook-page {\n  margin: 0 auto;\n  padding: 48px 20px;\n  max-width: 600px;\n  color: #333;\n  font-size: 14px;\n  line-height: 24px;\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n}\n\n.storybook-page h2 {\n  display: inline-block;\n  vertical-align: top;\n  margin: 0 0 4px;\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  color: #1ea7fd;\n  text-decoration: none;\n}\n\n.storybook-page ul {\n  margin: 1em 0;\n  padding-left: 30px;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  vertical-align: top;\n  margin-right: 10px;\n  border-radius: 1em;\n  background: #e7fdd8;\n  padding: 4px 12px;\n  color: #66bf3c;\n  font-weight: 700;\n  font-size: 11px;\n  line-height: 12px;\n}\n\n.storybook-page .tip-wrapper {\n  margin-top: 40px;\n  margin-bottom: 40px;\n  font-size: 13px;\n  line-height: 20px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  vertical-align: top;\n  margin-top: 3px;\n  margin-right: 4px;\n  width: 12px;\n  height: 12px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
-                    "styleUrl": "./page.css"
-                }
-            ],
-            "stylesData": "",
-            "extends": []
+            "templateData": "<div class=\"w-full mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-transform duration-300 hover:scale-[1.02] my-4\">\n  <div class=\"p-6\">\n    <div class=\"flex justify-between items-start mb-4\">\n      <div class=\"flex-1 flex items-center\">\n        <h2 class=\"text-xl font-semibold text-gray-800\" id=\"loanTitle\">\n          {{ client().name }} #{{ client().id }}\n          <span class=\"inline-flex items-center px-3 py-1 mt-2 text-sm rounded-full\"\n                [ngClass]=\"getStatusClass()\">{{ 'active' }}\n          </span>\n        </h2>\n        <button (click)=\"editClient()\"\n                class=\"ml-2 p-1 text-gray-500 hover:text-blue-500 transition duration-300 ease-in-out\">\n          <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" class=\"w-5 h-5\">\n            <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z\" />\n          </svg>\n        </button>\n      </div>\n    </div>\n    <div class=\"relative\">\n      <div class=\"flex flex-row w-full gap-4 items-center overflow-x-auto pb-4\">\n        @for (loan of client().loans; track client().id) {\n          <button class=\"flex-shrink-0\" (click)=\"viewLoanDetails(loan)\">\n            <div [ngClass]=\"{\n              'border-red-500': loan.status === 'overdue',\n              'border-green-500': loan.status !== 'overdue'\n            }\" class=\"bg-gray-50 font-bold border-l-4 p-3 rounded-lg\">\n              <p class=\"text-lg text-gray-600\">\n                {{ loan.amount | currency }}\n              </p>\n              <p class=\"text-lg font-semibold text-gray-900\">{{ loan.date | date :\"dd MMM\" }}</p>\n              <div class=\"relative pt-1\">\n                <div class=\"overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200\">\n                  <div [style.width.%]=\"loan.progressPercentage\"\n                       class=\"shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 transition-all duration-500\"></div>\n                </div>\n              </div>\n            </div>\n          </button>\n        }\n      </div>\n      <button (click)=\"createLoan()\"\n              class=\"absolute right-0 top-1/2 -translate-y-1/2 p-2 bg-white rounded-full shadow-md text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out\"\n              aria-label=\"Add new loan\">\n        <svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\" class=\"w-6 h-6\">\n          <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M12 4v16m8-8H4\" />\n        </svg>\n      </button>\n    </div>\n  </div>\n</div>\n\n"
         }
     ],
     "modules": [],
@@ -776,7 +951,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 9,
+        "count": 0,
         "status": "low",
         "files": [
             {
@@ -785,7 +960,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -799,16 +974,43 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/loan/loan-card/loan-card.component.ts",
+                "filePath": "src/app/components/client/edit-client/edit-client.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "LoanCardComponent",
+                "name": "EditClientComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/loan/create-loan/create-loan.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CreateLoanComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/11",
                 "status": "low"
             },
             {
-                "filePath": "src/app/components/loan/loan-card/loan-card.component.ts",
+                "filePath": "src/app/components/loan/loan-card.component.models.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Client",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/loan/loan-card.component.models.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "EditClient",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/loan/loan-card.component.models.ts",
                 "type": "interface",
                 "linktype": "interface",
                 "name": "Loan",
@@ -817,48 +1019,21 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/loan/loan-card.component.models.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "NewLoan",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/loan/loan-card/loan-card.component.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "User",
-                "coveragePercent": 0,
-                "coverageCount": "0/4",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/button.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "ButtonComponent",
-                "coveragePercent": 83,
-                "coverageCount": "5/6",
-                "status": "very-good"
-            },
-            {
-                "filePath": "src/stories/header.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "HeaderComponent",
+                "name": "LoanCardComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/page.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "PageComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/5",
-                "status": "low"
-            },
-            {
-                "filePath": "src/stories/user.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "User",
-                "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/13",
                 "status": "low"
             }
         ]

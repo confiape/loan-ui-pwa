@@ -6,11 +6,12 @@ import {Validators} from '@angular/forms';
 import {Field} from './core/lib/dinamic-form/dynamic-form-body/field.model';
 import {CreateLoanComponent} from './components/loan/create-loan/create-loan.component';
 import {LoginComponent} from './pages/login/login.component';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
   imports: [
-    LoginComponent
+    RouterOutlet
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

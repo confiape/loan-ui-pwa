@@ -1,5 +1,7 @@
-import {AfterViewInit, Component} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {AuthenticateService} from '../../core/services/openapi';
 
 declare const google: any;
 
@@ -7,7 +9,14 @@ declare const google: any;
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent implements OnInit, AfterViewInit {
+
+  constructor(private httpClient: HttpClient, private _authenticateService: AuthenticateService) {
+  }
+
+  ngOnInit(): void {
+
+  }
 
   ngAfterViewInit(): void {
     this.initializeGoogleSignIn();
@@ -26,7 +35,7 @@ export class LoginComponent implements AfterViewInit {
         theme: 'outline',
         size: 'large',
         width: '250',
-      }, {locale: 'es'}
+      }
     );
 
     google.accounts.id.prompt();
@@ -45,6 +54,9 @@ export class LoginComponent implements AfterViewInit {
         .join('')
     );
     const userData = JSON.parse(jsonPayload);
+    this._authenticateService.apiAuthenticateLoginWithGoogleTokenPost({
+      accessToken: jwtToken
+    }).subscribe()
     console.log('User Data:', userData);
   }
 }

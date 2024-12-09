@@ -95,21 +95,6 @@ export class DynamicFormBodyComponent implements OnInit {
     return Array.isArray(currentValue) && currentValue.includes(value);
   }
 
-  toggleMultiToggleValue(fieldName: string, value: any, checked: boolean): void {
-    const control = this.form.get(fieldName);
-    if (control) {
-      let currentValue = control.value || [];
-      if (!Array.isArray(currentValue)) {
-        currentValue = [];
-      }
-
-      if (checked) {
-        control.setValue([...currentValue, value]);
-      } else {
-        control.setValue(currentValue.filter((v: any) => v !== value));
-      }
-    }
-  }
 
   onSubmit(): void {
     if (this.form.valid) {

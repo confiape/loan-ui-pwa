@@ -1,0 +1,141 @@
+<div class="bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto">
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">Dynamic Form</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-2 ">
+    <ng-container *ngFor="let field of fields">
+      <div [ngSwitch]="field.type" >
+        <!-- Text Input -->
+        <mat-form-field *ngSwitchCase="'text'"   class="w-full">
+          <mat-label>{{ field.displayName }}</mat-label>
+          <input matInput [formControlName]="field.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+        </mat-form-field>
+
+        <!-- Number Input -->
+        <mat-form-field *ngSwitchCase="'number'"     class="w-full">
+          <mat-label>{{ field.displayName }}</mat-label>
+          <input matInput type="number" [formControlName]="field.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+        </mat-form-field>
+
+        <!-- Date Input -->
+        <mat-form-field *ngSwitchCase="'date'"   class="w-full">
+          <mat-label>{{ field.displayName }}</mat-label>
+          <input matInput [matDatepicker]="datePickers" [formControlName]="field.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"/>
+          <mat-datepicker-toggle matSuffix [for]="datePickers"></mat-datepicker-toggle>
+          <mat-datepicker #datePickers></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Checkbox -->
+        <div *ngSwitchCase="'boolean'" class="flex items-center">
+          <mat-checkbox [formControlName]="field.name" class="text-gray-700">
+            {{ field.displayName }}
+          </mat-checkbox>
+        </div>
+
+        <!-- Select -->
+        <mat-form-field *ngSwitchCase="'select'"     class="w-full">
+          <mat-label>{{ field.displayName }}</mat-label>
+          <mat-select [formControlName]="field.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <mat-option *ngFor="let option of field.options" [value]="option.value">
+              {{ option.displayName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Multi-Select -->
+        <mat-form-field *ngSwitchCase="'multi-select'"   class="w-full">
+          <mat-label>{{ field.displayName }}</mat-label>
+          <mat-select [formControlName]="field.name" multiple class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <mat-option *ngFor="let option of field.options" [value]="option.value">
+              {{ option.displayName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Radio Group -->
+        <div *ngSwitchCase="'radio'" class="w-full">
+          <label class="block text-gray-700 font-medium mb-2">{{ field.displayName }}</label>
+          <mat-radio-group [formControlName]="field.name" >
+            <mat-radio-button
+              *ngFor="let option of field.options"
+              [value]="option.value"
+              class="block text-gray-600"
+            >
+              {{ option.displayName }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <!-- Multi-Radio -->
+        <div *ngSwitchCase="'multi-radio'" class="w-full">
+          <label class="block text-gray-700 font-medium mb-2">{{ field.displayName }}</label>
+          <div *ngFor="let option of field.options" class="flex items-center space-x-2">
+            <mat-checkbox
+              [checked]="isOptionChecked(field.name, option.value)"
+              (change)="toggleMultiRadioValue(field.name, option.value, $event.checked)"
+              class="text-gray-600"
+            >
+              {{ option.displayName }}
+            </mat-checkbox>
+          </div>
+        </div>
+
+        <!-- Button Toggle -->
+        <div *ngSwitchCase="'button-toggle'" class="w-full">
+          <label class="block text-gray-700 font-medium mb-2">{{ field.displayName }}</label>
+          <mat-button-toggle-group
+            [formControlName]="field.name"
+            class="flex flex-wrap gap-2"
+          >
+            <mat-button-toggle
+              *ngFor="let option of field.options"
+              [value]="option.value"
+              class="bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {{ option.displayName }}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <!-- Multi Button Toggle -->
+        <div *ngSwitchCase="'multi-button-toggle'" class="w-full">
+          <label class="block text-gray-700 font-medium mb-2">{{ field.displayName }}</label>
+          <mat-button-toggle-group
+            [formControlName]="field.name"
+            [multiple]="true"
+            class="flex flex-wrap gap-2"
+          >
+            <mat-button-toggle
+              *ngFor="let option of field.options"
+              [value]="option.value"
+              [checked]="isOptionChecked(field.name, option.value)"
+              (change)="toggleMultiToggleValue(field.name, option.value, $event.source.checked)"
+              class="bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {{ option.displayName }}
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="flex justify-end space-x-4 mt-8">
+      <button
+        mat-raised-button
+        type="button"
+        color="warn"
+        class="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+        *ngIf="isModal"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

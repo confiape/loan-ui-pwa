@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, input, output} from '@angular/core';
 import {DynamicFormBodyComponent} from '../dynamic-form-body/dynamic-form-body.component';
 import {NgIf} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
@@ -15,21 +15,29 @@ import {MatDialog} from '@angular/material/dialog';
   templateUrl: './dynamic-form.component.html'
 })
 export class DynamicFormComponent {
-  @Input() fields: Field[] = [];
-  @Input() value: Record<string, any> = {};
-  @Input() isModal: boolean = false;
 
-  @Output() formSubmit = new EventEmitter<Record<string, any>>();
-  @Output() formCancel = new EventEmitter<void>();
+  fields = input.required<Field[]>();
+  value = input<Record<string, any>>();
+  isModal = input<boolean>(false);
+  title = input<string>("");
 
-  constructor(private dialog: MatDialog) {}
+
+  formSubmit = output<Record<string, any>>();
+  formCancel = output();
+
+  constructor(private dialog: MatDialog) {
+  }
 
   openModal(): void {
-    const dialogRef = this.dialog.open(DynamicFormBodyComponent, {
-      width: '500px',
-      data: { fields: this.fields, value: this.value },
-    });
+    // const dialogRef = this.dialog.open(DynamicFormBodyComponent, {
+    //   data: {fields: this.fields(), value: this.value()},
+    //   panelClass: 'custom-modal'
+    // });
 
+    const dialogRef = this.dialog.open(DynamicFormBodyComponent, {
+      data: { fields: this.fields(), value: this.value() },
+      height: '90vh',
+    });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.formSubmit.emit(result);

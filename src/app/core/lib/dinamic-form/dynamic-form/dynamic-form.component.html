@@ -1,4 +1,4 @@
-<div *ngIf="isModal; else directForm" class="flex justify-end">
+<div *ngIf="isModal(); else directForm" class="flex justify-end">
   <button
     mat-raised-button
     color="primary"
@@ -11,8 +11,9 @@
 
 <ng-template #directForm>
   <app-dynamic-form-body
-    [fields]="fields"
-    [value]="value"
+    [fieldsInput]="fields()"
+    [valueInput]="value()"
+    [titleInput]="title()"
     (formSubmit)="onFormSubmit($event)"
     (formCancel)="onFormCancel()"
   ></app-dynamic-form-body>

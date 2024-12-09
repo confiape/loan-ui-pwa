@@ -22787,7 +22787,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-a73b3ce15f6996b4d3d6afe6793da2e57bda289a880730fbe50a832a6c839d243cc60f6e445ab67bfa479341bebae7753e9cce5f704aa331604d6815f8bc3bf2",
+            "id": "component-AppComponent-2836042942bd8362e99cb9952d9d871a3074cf903aefafda5f1fe9c09eaa59931d7809024c0b5b0f92f89f0bee9cad432f15ae887f9e3d040be6e6408dc8671d",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -22814,7 +22814,18 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 22
+                },
+                {
+                    "name": "fields",
+                    "defaultValue": "[\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'password', type: 'text', displayName: 'Password', validators: [Validators.required, Validators.minLength(8)] },\n    { name: 'role', type: 'select', displayName: 'Role', options: [\n        { value: 'admin', displayName: 'Admin' },\n        { value: 'user', displayName: 'User' },\n        { value: 'guest', displayName: 'Guest' },\n      ] },\n    { name: 'preferences', type: 'multi-select', displayName: 'Preferences', options: [\n        { value: 'notifications', displayName: 'Notifications' },\n        { value: 'dark_mode', displayName: 'Dark Mode' },\n      ] },\n    { name: 'gender', type: 'radio', displayName: 'Gender', options: [\n        { value: 'male', displayName: 'Male' },\n        { value: 'female', displayName: 'Female' },\n      ] },\n    { name: 'features', type: 'multi-radio', displayName: 'Features', options: [\n        { value: 'reports', displayName: 'Reports' },\n        { value: 'analytics', displayName: 'Analytics' },\n      ] },\n    { name: 'theme', type: 'button-toggle', displayName: 'Theme', options: [\n        { value: 'dark', displayName: 'Dark' },\n        { value: 'light', displayName: 'Light' },\n      ] },\n    { name: 'modules', type: 'multi-button-toggle', displayName: 'Modules', options: [\n        { value: 'dashboard', displayName: 'Dashboard' },\n        { value: 'settings', displayName: 'Settings' },\n      ] },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Field[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 141
                 },
                 {
                     "name": "selectedLoan",
@@ -22825,7 +22836,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 23
+                    "line": 29
                 },
                 {
                     "name": "title",
@@ -22836,10 +22847,60 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 21
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "{\n    name: 'John Doe',\n    age: 30,\n    isActive: true,\n    birthDate: '1990-01-01'\n  }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 175
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "onFormCancel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 186,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onFormSubmit",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "Record<string | any>",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 182,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "Record<string | any>",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -22847,24 +22908,24 @@
             "standalone": false,
             "imports": [
                 {
-                    "name": "EditClientComponent",
+                    "name": "DynamicFormComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component} from '@angular/core';\nimport {EditClient} from './components/loan/loan-card.component.models';\nimport {SimpleLoanDtoAndPayments} from './core/services/openapi';\nimport {EditClientComponent} from './components/client/edit-client/edit-client.component';\n\n@Component({\n  selector: 'app-root',\n  imports: [\n    EditClientComponent\n  ],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss'\n})\nexport class AppComponent {\n  title = 'confiape-loans-ui';\n  clientData: EditClient = {\n    name: 'warren',\n    alias: 'aroni',\n    dni: '4772445',\n    cellphone: '937373210',\n    tags: [\"wa\"]\n  };\n  selectedLoan: SimpleLoanDtoAndPayments = {\n    id: \"loan123\",\n    amount: 10000,\n    interest: 0.12,\n    dateTime: \"2024-12-01T10:00:00Z\",\n    numberDate: 30,\n    borrowerClientId: \"client456\",\n    totalAmount: 11200, // Amount + 12% interest\n    totalPayment: 8500,\n    payments: [\n      {\n        id: \"payment1\",\n        dateTime: \"2024-12-05T10:00:00Z\",\n        amount: 2000,\n      },\n      {\n        id: \"payment2\",\n        dateTime: \"2024-12-12T10:00:00Z\",\n        amount: 3000,\n      },\n      {\n        id: \"payment3\",\n        dateTime: \"2024-12-19T10:00:00Z\",\n        amount: 3500,\n      },\n      {\n        id: \"payment4\",\n        dateTime: \"2024-12-26T10:00:00Z\",\n        amount: 200, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n    ],\n  };\n\n}\n",
+            "sourceCode": "import {Component} from '@angular/core';\nimport {EditClient} from './components/loan/loan-card.component.models';\nimport {SimpleLoanDtoAndPayments} from './core/services/openapi';\nimport {EditClientComponent} from './components/client/edit-client/edit-client.component';\nimport {DynamicFormBodyComponent} from './core/lib/dinamic-form/dynamic-form-body/dynamic-form-body.component';\n\nimport {Validators} from '@angular/forms';\nimport {Field} from './core/lib/dinamic-form/dynamic-form-body/field.model';\nimport {DynamicFormComponent} from './core/lib/dinamic-form/dynamic-form/dynamic-form.component';\nimport {LoanDetailComponent} from './components/loan/loan-detail/loan-detail.component';\n\n@Component({\n  selector: 'app-root',\n  imports: [\n    DynamicFormComponent\n  ],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss'\n})\nexport class AppComponent {\n  title = 'confiape-loans-ui';\n  clientData: EditClient = {\n    name: 'warren',\n    alias: 'aroni',\n    dni: '4772445',\n    cellphone: '937373210',\n    tags: [\"wa\"]\n  };\n  selectedLoan: SimpleLoanDtoAndPayments = {\n    id: \"loan123\",\n    amount: 10000,\n    interest: 0.12,\n    dateTime: \"2024-12-01T10:00:00Z\",\n    numberDate: 30,\n    borrowerClientId: \"client456\",\n    totalAmount: 11200, // Amount + 12% interest\n    totalPayment: 8500,\n    payments: [\n      {\n        id: \"payment1\",\n        dateTime: \"2024-12-05T10:00:00Z\",\n        amount: 2000,\n      },\n      {\n        id: \"payment2\",\n        dateTime: \"2024-12-12T10:00:00Z\",\n        amount: 3000,\n      },\n      {\n        id: \"payment3\",\n        dateTime: \"2024-12-19T10:00:00Z\",\n        amount: 3500,\n      },\n      {\n        id: \"payment4\",\n        dateTime: \"2024-12-26T10:00:00Z\",\n        amount: 200, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 0, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n      {\n        id: \"payment5\",\n        dateTime: \"2025-01-02T10:00:00Z\",\n        amount: 10, // Payment not yet made\n      },\n    ],\n  };\n  fields : Field[] =[\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required] },\n    { name: 'password', type: 'text', displayName: 'Password', validators: [Validators.required, Validators.minLength(8)] },\n    { name: 'role', type: 'select', displayName: 'Role', options: [\n        { value: 'admin', displayName: 'Admin' },\n        { value: 'user', displayName: 'User' },\n        { value: 'guest', displayName: 'Guest' },\n      ] },\n    { name: 'preferences', type: 'multi-select', displayName: 'Preferences', options: [\n        { value: 'notifications', displayName: 'Notifications' },\n        { value: 'dark_mode', displayName: 'Dark Mode' },\n      ] },\n    { name: 'gender', type: 'radio', displayName: 'Gender', options: [\n        { value: 'male', displayName: 'Male' },\n        { value: 'female', displayName: 'Female' },\n      ] },\n    { name: 'features', type: 'multi-radio', displayName: 'Features', options: [\n        { value: 'reports', displayName: 'Reports' },\n        { value: 'analytics', displayName: 'Analytics' },\n      ] },\n    { name: 'theme', type: 'button-toggle', displayName: 'Theme', options: [\n        { value: 'dark', displayName: 'Dark' },\n        { value: 'light', displayName: 'Light' },\n      ] },\n    { name: 'modules', type: 'multi-button-toggle', displayName: 'Modules', options: [\n        { value: 'dashboard', displayName: 'Dashboard' },\n        { value: 'settings', displayName: 'Settings' },\n      ] },\n  ];\n\n  value = {\n    name: 'John Doe',\n    age: 30,\n    isActive: true,\n    birthDate: '1990-01-01'\n  };\n\n  onFormSubmit(value: Record<string, any>): void {\n    console.log('Form Submitted:', value);\n  }\n\n  onFormCancel(): void {\n    console.log('Form Canceled');\n  }\n}\n",
             "styleUrl": "./app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<!--<app-create-loan [clientId]=\"'a'\" [clientName]=\"'ware'\"></app-create-loan>-->\n<app-edit-client [clientData]=\"clientData\" [availableTags]=\"['San Pedro','Cascaparo','Wanchack','Vinocanchon']\"></app-edit-client>\n<!--<app-loan-detail [loanDetails]=\"selectedLoan\"></app-loan-detail>-->\n"
+            "templateData": "<!--<app-create-loan [clientId]=\"'a'\" [clientName]=\"'ware'\"></app-create-loan>-->\n<!--<app-edit-client [clientData]=\"clientData\" [availableTags]=\"['San Pedro','Cascaparo','Wanchack','Vinocanchon']\"></app-edit-client>-->\n<!--<app-loan-detail [loanDetails]=\"selectedLoan\"></app-loan-detail>-->\n<app-dynamic-form\n  [fields]=\"fields\"\n  [value]=\"{}\"\n  [isModal]=\"true\"\n></app-dynamic-form>\n"
         },
         {
             "name": "CreateLoanComponent",
-            "id": "component-CreateLoanComponent-2a8d040a0b0742a22af7547506ac7fce6d2d6ef5839384acc443499a1080d3413857c331ff8749e26b825d476174b00b470a9270d4acd1ff9acda6d7e09f2513",
+            "id": "component-CreateLoanComponent-b95d82440cb66c82c9c045f70da33260ea161b087696b47c04c5dd1a2a6eb3485b720d0b7d1d9a037e59dd53f14b250a694a6be867df6b2316c205f9a4c1263b",
             "file": "src/app/components/loan/create-loan/create-loan.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -22998,7 +23059,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, input, OnInit, output} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {NgIf} from '@angular/common';\nimport {NewLoan} from '../loan-card.component.models';\n\n@Component({\n  selector: 'app-create-loan',\n  imports: [\n    ReactiveFormsModule,\n    NgIf\n  ],\n  templateUrl: './create-loan.component.html'\n})\nexport class CreateLoanComponent implements OnInit {\n  loanForm!: FormGroup;\n  clientName = input.required<string>();\n  clientId = input.required<string>();\n\n  onLoanCreate = output<{ loan: NewLoan, id: string }>()\n\n  constructor(private fb: FormBuilder) {\n  }\n\n  ngOnInit() {\n    this.loanForm = this.fb.group({\n      amount: ['', [Validators.required, Validators.min(0)]],\n      date: ['', Validators.required],\n      duration: ['27', [Validators.required, Validators.min(1)]],\n      interestRate: ['8.4', [Validators.required, Validators.min(0), Validators.max(100)]],\n      loanType: ['daily', Validators.required],\n    });\n  }\n\n  onSubmit() {\n    if (this.loanForm.valid) {\n      this.onLoanCreate.emit({\n        id: this.clientId(),\n        loan: this.loanForm.value\n      })\n    }\n  }\n\n  onCancel() {\n\n  }\n}\n",
+            "sourceCode": "import {Component, input, OnInit, output} from '@angular/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';\nimport {NgIf} from '@angular/common';\nimport {NewLoan} from '../loan-card.component.models';\n\n@Component({\n  selector: 'app-create-loan',\n  imports: [\n    ReactiveFormsModule,\n    NgIf\n  ],\n  templateUrl: './create-loan.component.html'\n})\nexport class CreateLoanComponent implements OnInit {\n  loanForm!: FormGroup;\n    clientName = input.required<string>();\n  clientId = input.required<string>();\n\n  onLoanCreate = output<{ loan: NewLoan, id: string }>()\n\n  constructor(private fb: FormBuilder) {\n  }\n\n  ngOnInit() {\n    this.loanForm = this.fb.group({\n      amount: ['', [Validators.required, Validators.min(0)]],\n      date: ['', Validators.required],\n      duration: ['27', [Validators.required, Validators.min(1)]],\n      interestRate: ['8.4', [Validators.required, Validators.min(0), Validators.max(100)]],\n      loanType: ['daily', Validators.required],\n    });\n  }\n\n  onSubmit() {\n    if (this.loanForm.valid) {\n      this.onLoanCreate.emit({\n        id: this.clientId(),\n        loan: this.loanForm.value\n      })\n    }\n  }\n\n  onCancel() {\n\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -23036,7 +23097,7 @@
         },
         {
             "name": "DynamicFormBodyComponent",
-            "id": "component-DynamicFormBodyComponent-1057d57067588b44e9bcd9e7fe0a61b73a9f3cf038a294f4e597331406dab94dc53f0535abc0478fd98ce9afa7471634deb436cac5d076936c6c3f9ce3fc421f",
+            "id": "component-DynamicFormBodyComponent-5f6c0946f02f81be1fc097141bdec23b6546ccf8dc4a850a6d6b36f62adf1a05daa6c397de649afedb0cf357624e9167497ec5ec4189638ace7cb33d35c632c0",
             "file": "src/app/core/lib/dinamic-form/dynamic-form-body/dynamic-form-body.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -23055,42 +23116,18 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "fields",
-                    "defaultValue": "[]",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 37,
-                    "type": "Field[]",
-                    "decorators": []
-                },
-                {
-                    "name": "value",
-                    "defaultValue": "{}",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 38,
-                    "type": "Record<string | any>",
-                    "decorators": []
-                }
-            ],
+            "inputsClass": [],
             "outputsClass": [
                 {
                     "name": "formCancel",
-                    "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 40,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "formSubmit",
-                    "defaultValue": "new EventEmitter<Record<string, any>>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 39,
-                    "type": "EventEmitter"
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "required": false
                 }
             ],
             "propertiesClass": [
@@ -23102,7 +23139,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 48,
+                    "line": 55,
                     "decorators": [
                         {
                             "name": "Optional",
@@ -23120,6 +23157,28 @@
                     ]
                 },
                 {
+                    "name": "fields",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Field[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "fieldsInput",
+                    "defaultValue": "input<Field[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
                     "name": "form",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -23127,17 +23186,62 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 42
+                    "line": 48
+                },
+                {
+                    "name": "formCancel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 46,
+                    "required": false
+                },
+                {
+                    "name": "formSubmit",
+                    "defaultValue": "output<Record<string, any>>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 45
                 },
                 {
                     "name": "isModal",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "boolean",
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 43
+                    "line": 49
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "{}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Record<string | any>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                },
+                {
+                    "name": "valueInput",
+                    "defaultValue": "input<Record<string, any>>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
                 }
             ],
             "methodsClass": [
@@ -23147,7 +23251,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 62,
+                    "line": 79,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23170,7 +23274,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 91,
+                    "line": 109,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23195,12 +23299,22 @@
                     ]
                 },
                 {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 58,
+                    "line": 64,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23210,7 +23324,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 109,
+                    "line": 126,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23220,12 +23334,12 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 99,
+                    "line": 116,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
                 {
-                    "name": "toggleMultiRadioValue",
+                    "name": "toggleMultiToggleValue",
                     "args": [
                         {
                             "name": "fieldName",
@@ -23249,7 +23363,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 75,
+                    "line": 93,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23274,6 +23388,49 @@
                         {
                             "name": "checked",
                             "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "trackByFn",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "field",
+                            "type": "Field",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 134,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "field",
+                            "type": "Field",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -23341,7 +23498,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Inject, Input, OnInit, Optional, Output} from '@angular/core';\nimport {provideNativeDateAdapter} from '@angular/material/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';\nimport {NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';\nimport {MatFormFieldModule} from '@angular/material/form-field';\nimport {MatCheckboxModule} from '@angular/material/checkbox';\nimport {MatInputModule} from '@angular/material/input';\nimport {MatButtonModule} from '@angular/material/button';\nimport {MatDatepickerModule} from '@angular/material/datepicker';\nimport {MatSelectModule} from '@angular/material/select';\nimport {MatRadioModule} from '@angular/material/radio';\nimport {MatButtonToggleModule} from '@angular/material/button-toggle';\nimport {Field} from './field.model';\nimport {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';\n\n@Component({\n  selector: 'app-dynamic-form-body',\n  imports: [\n    ReactiveFormsModule,\n    NgSwitch,\n    MatFormFieldModule,\n    MatCheckboxModule,\n    MatInputModule,\n    MatButtonModule,\n    NgForOf,\n    NgSwitchCase,\n    NgIf,\n    MatDatepickerModule,\n    MatSelectModule,\n    MatRadioModule,\n    MatButtonToggleModule,\n  ],\n  templateUrl: './dynamic-form-body.component.html',\n  providers: [provideNativeDateAdapter()]\n})\nexport class DynamicFormBodyComponent implements OnInit {\n  @Input() fields: Field[] = [];\n  @Input() value: Record<string, any> = {};\n  @Output() formSubmit = new EventEmitter<Record<string, any>>();\n  @Output() formCancel = new EventEmitter<void>();\n\n  form!: FormGroup;\n  isModal: boolean;\n\n  constructor(\n    private fb: FormBuilder,\n    @Optional() private dialogRef?: MatDialogRef<DynamicFormBodyComponent>,\n    @Optional() @Inject(MAT_DIALOG_DATA) public data?: { fields: Field[]; value: any }\n  ) {\n    this.isModal = !!this.dialogRef;\n\n    if (this.isModal && this.data) {\n      this.fields = this.data.fields;\n      this.value = this.data.value;\n    }\n  }\n\n  ngOnInit(): void {\n    this.buildForm();\n  }\n\n  buildForm(): void {\n    const controls: Record<string, any> = {};\n\n    this.fields.forEach((field) => {\n      controls[field.name] = [\n        this.value[field.name] || (field.type === 'multi-radio' || field.type === 'multi-select' ? [] : ''),\n        field.validators || [],\n      ];\n    });\n\n    this.form = this.fb.group(controls);\n  }\n\n  toggleMultiRadioValue(fieldName: string, value: any, checked: boolean): void {\n    const control = this.form.get(fieldName);\n    if (control) {\n      let currentValue = control.value || [];\n      if (!Array.isArray(currentValue)) {\n        currentValue = [];\n      }\n\n      if (checked) {\n        control.setValue([...currentValue, value]);\n      } else {\n        control.setValue(currentValue.filter((v: any) => v !== value));\n      }\n    }\n  }\n\n  isOptionChecked(fieldName: string, value: any): boolean {\n    const control = this.form.get(fieldName);\n    const currentValue = control?.value;\n\n    return Array.isArray(currentValue) && currentValue.includes(value);\n  }\n\n\n  onSubmit(): void {\n    if (this.form.valid) {\n      if (this.isModal) {\n        this.dialogRef?.close(this.form.value);\n      } else {\n        this.formSubmit.emit(this.form.value);\n      }\n    }\n  }\n\n  onCancel(): void {\n    if (this.isModal) {\n      this.dialogRef?.close();\n    } else {\n      this.formCancel.emit();\n    }\n  }\n\n}\n\n",
+            "sourceCode": "import {AfterViewInit, ChangeDetectorRef, Component, Inject, input, OnInit, Optional, output,} from '@angular/core';\nimport {provideNativeDateAdapter} from '@angular/material/core';\nimport {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';\nimport {NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';\nimport {MatFormFieldModule} from '@angular/material/form-field';\nimport {MatCheckboxModule} from '@angular/material/checkbox';\nimport {MatInputModule} from '@angular/material/input';\nimport {MatButtonModule} from '@angular/material/button';\nimport {MatDatepickerModule} from '@angular/material/datepicker';\nimport {MatSelectModule} from '@angular/material/select';\nimport {MatRadioModule} from '@angular/material/radio';\nimport {MatButtonToggleModule} from '@angular/material/button-toggle';\nimport {Field} from './field.model';\nimport {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';\n\n@Component({\n  selector: 'app-dynamic-form-body',\n  imports: [\n    ReactiveFormsModule,\n    NgSwitch,\n    MatFormFieldModule,\n    MatCheckboxModule,\n    MatInputModule,\n    MatButtonModule,\n    NgForOf,\n    NgSwitchCase,\n    NgIf,\n    MatDatepickerModule,\n    MatSelectModule,\n    MatRadioModule,\n    MatButtonToggleModule,\n  ],\n  templateUrl: './dynamic-form-body.component.html',\n  providers: [provideNativeDateAdapter()]\n})\nexport class DynamicFormBodyComponent implements OnInit, AfterViewInit {\n  fieldsInput = input<Field[]>();\n  valueInput = input<Record<string, any>>();\n\n  fields : Field[]=[];\n  value : Record<string, any>={};\n\n\n\n  formSubmit = output<Record<string, any>>();\n  formCancel = output();\n\n  form!: FormGroup;\n  isModal: boolean=false;\n\n  constructor(\n    private fb: FormBuilder,\n    private cdr: ChangeDetectorRef,\n    @Optional() private dialogRef?: MatDialogRef<DynamicFormBodyComponent>,\n    @Optional() @Inject(MAT_DIALOG_DATA) public data?: { fields: Field[]; value: any }\n  ) {\n\n  }\n\n  ngAfterViewInit(): void {\n    this.cdr.detectChanges()\n  }\n\n  ngOnInit(): void {\n    this.isModal = !!this.dialogRef;\n\n    if (this.isModal && this.data ) {\n      this.fields=this.data?.fields ;\n      this.value=this.data?.value;\n    }\n    if(!this.isModal){\n      this.fields=this.fieldsInput() ?? [];\n      this.value=this.valueInput()??{};\n    }\n    this.buildForm();\n    this.cdr.detectChanges()\n  }\n\n  buildForm(): void {\n    const controls: Record<string, any> = {};\n\n    this.fields?.forEach((field) => {\n      let val=this.value;\n      controls[field.name] = [\n        val && val[field.name] || (field.type === 'multi-radio' || field.type === 'multi-select' ? [] : ''),\n        field.validators || [],\n      ];\n    });\n\n    this.form = this.fb.group(controls);\n  }\n\n  toggleMultiToggleValue(fieldName: string, value: any, checked: boolean): void {\n    const control = this.form.get(fieldName);\n    if (control) {\n      let currentValue = control.value || [];\n      if (!Array.isArray(currentValue)) {\n        currentValue = [];\n      }\n\n      if (checked) {\n        control.setValue([...currentValue, value]);\n      } else {\n        control.setValue(currentValue.filter((v: any) => v !== value));\n      }\n    }\n  }\n\n  isOptionChecked(fieldName: string, value: any): boolean {\n    const control = this.form.get(fieldName);\n    const currentValue = control?.value;\n\n    return Array.isArray(currentValue) && currentValue.includes(value);\n  }\n\n  onSubmit(): void {\n    if (this.form.valid) {\n      if (this.isModal) {\n        this.dialogRef?.close(this.form.value);\n      } else {\n        this.formSubmit.emit(this.form.value);\n      }\n    }\n  }\n\n  onCancel(): void {\n    if (this.isModal) {\n      this.dialogRef?.close();\n    } else {\n      this.formCancel.emit();\n    }\n  }\n\n  trackByFn(index: number, field: Field): string {\n    return field.name;\n  }\n}\n\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -23354,6 +23511,12 @@
                     {
                         "name": "fb",
                         "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
                         "deprecated": false,
                         "deprecationMessage": ""
                     },
@@ -23372,11 +23535,20 @@
                         "optional": true
                     }
                 ],
-                "line": 43,
+                "line": 49,
                 "jsdoctags": [
                     {
                         "name": "fb",
                         "type": "FormBuilder",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -23407,13 +23579,14 @@
             },
             "extends": [],
             "implements": [
-                "OnInit"
+                "OnInit",
+                "AfterViewInit"
             ],
-            "templateData": "<div class=\"bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto\">\n  <h2 class=\"text-2xl font-bold mb-6 text-gray-800\">Dynamic Form</h2>\n  <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\" class=\"space-y-2 \" data-testid=\"dynamic-form\">\n    <ng-container *ngFor=\"let field of fields\">\n      <div [ngSwitch]=\"field.type\">\n        <!-- Text Input -->\n        <mat-form-field *ngSwitchCase=\"'text'\" class=\"w-full\" data-testid=\"text-field\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <input matInput [formControlName]=\"field.name\" class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\" data-testid=\"{{ field.name }}-input\" />\n        </mat-form-field>\n\n        <!-- Number Input -->\n        <mat-form-field *ngSwitchCase=\"'number'\" class=\"w-full\" data-testid=\"number-field\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <input matInput type=\"number\" [formControlName]=\"field.name\" class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\" data-testid=\"{{ field.name }}-input\" />\n        </mat-form-field>\n\n        <!-- Date Input -->\n        <mat-form-field *ngSwitchCase=\"'date'\" class=\"w-full\" data-testid=\"date-field\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <input matInput [matDatepicker]=\"datePickers\" [formControlName]=\"field.name\" class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\" data-testid=\"{{ field.name }}-input\" />\n          <mat-datepicker-toggle matSuffix [for]=\"datePickers\"></mat-datepicker-toggle>\n          <mat-datepicker #datePickers></mat-datepicker>\n        </mat-form-field>\n\n        <!-- Checkbox -->\n        <div *ngSwitchCase=\"'boolean'\" class=\"flex items-center\" data-testid=\"boolean-field\">\n          <mat-checkbox [formControlName]=\"field.name\" class=\"text-gray-700\" data-testid=\"{{ field.name }}-checkbox\">\n            {{ field.displayName }}\n          </mat-checkbox>\n        </div>\n\n        <!-- Select -->\n        <mat-form-field *ngSwitchCase=\"'select'\" class=\"w-full\" data-testid=\"select-field\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <mat-select [formControlName]=\"field.name\" class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\" data-testid=\"{{ field.name }}-select\">\n            <mat-option *ngFor=\"let option of field.options\" [value]=\"option.value\" data-testid=\"{{ field.name }}-option-{{ option.value }}\">\n              {{ option.displayName }}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <!-- Multi-Select -->\n        <mat-form-field *ngSwitchCase=\"'multi-select'\" class=\"w-full\" data-testid=\"multi-select-field\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <mat-select [formControlName]=\"field.name\" multiple class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\" data-testid=\"{{ field.name }}-multi-select\">\n            <mat-option *ngFor=\"let option of field.options\" [value]=\"option.value\" data-testid=\"{{ field.name }}-option-{{ option.value }}\">\n              {{ option.displayName }}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <!-- Radio Group -->\n        <div *ngSwitchCase=\"'radio'\" class=\"w-full\" data-testid=\"radio-field\">\n          <label class=\"block text-gray-700 font-medium mb-2\">{{ field.displayName }}</label>\n          <mat-radio-group [formControlName]=\"field.name\" data-testid=\"{{ field.name }}-radio-group\">\n            <mat-radio-button *ngFor=\"let option of field.options\" [value]=\"option.value\" class=\"block text-gray-600\" data-testid=\"{{ field.name }}-radio-{{ option.value }}\">\n              {{ option.displayName }}\n            </mat-radio-button>\n          </mat-radio-group>\n        </div>\n\n        <!-- Multi-Radio -->\n        <div *ngSwitchCase=\"'multi-radio'\" class=\"w-full\" data-testid=\"multi-radio-field\">\n          <label class=\"block text-gray-700 font-medium mb-2\">{{ field.displayName }}</label>\n          <div *ngFor=\"let option of field.options\" class=\"flex items-center space-x-2\">\n            <mat-checkbox [checked]=\"isOptionChecked(field.name, option.value)\" (change)=\"toggleMultiRadioValue(field.name, option.value, $event.checked)\" class=\"text-gray-600\" data-testid=\"{{ field.name }}-multi-radio-{{ option.value }}\">\n              {{ option.displayName }}\n            </mat-checkbox>\n          </div>\n        </div>\n\n        <!-- Button Toggle -->\n        <div *ngSwitchCase=\"'button-toggle'\" class=\"w-full\" data-testid=\"button-toggle-field\">\n          <label class=\"block text-gray-700 font-medium mb-2\">{{ field.displayName }}</label>\n          <mat-button-toggle-group [formControlName]=\"field.name\" class=\"flex flex-wrap gap-2\" data-testid=\"{{ field.name }}-button-toggle-group\">\n            <mat-button-toggle *ngFor=\"let option of field.options\" [value]=\"option.value\" class=\"bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500\" data-testid=\"{{ field.name }}-button-toggle-{{ option.value }}\">\n              {{ option.displayName }}\n            </mat-button-toggle>\n          </mat-button-toggle-group>\n        </div>\n\n        <!-- Multi Button Toggle -->\n        <div *ngSwitchCase=\"'multi-button-toggle'\" class=\"w-full\" data-testid=\"multi-button-toggle-field\">\n          <label class=\"block text-gray-700 font-medium mb-2\">{{ field.displayName }}</label>\n          <mat-button-toggle-group [formControlName]=\"field.name\" [multiple]=\"true\" class=\"flex flex-wrap gap-2\" data-testid=\"{{ field.name }}-multi-button-toggle-group\">\n            <mat-button-toggle *ngFor=\"let option of field.options\" [value]=\"option.value\" [checked]=\"isOptionChecked(field.name, option.value)\" (change)=\"toggleMultiToggleValue(field.name, option.value, $event.source.checked)\" class=\"bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500\" data-testid=\"{{ field.name }}-multi-button-toggle-{{ option.value }}\">\n              {{ option.displayName }}\n            </mat-button-toggle>\n          </mat-button-toggle-group>\n        </div>\n      </div>\n    </ng-container>\n\n    <div class=\"flex justify-end space-x-4 mt-8\">\n      <button mat-raised-button type=\"button\" color=\"warn\" class=\"px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2\" *ngIf=\"isModal\" (click)=\"onCancel()\" data-testid=\"cancel-button\">\n        Cancel\n      </button>\n      <button mat-raised-button color=\"primary\" type=\"submit\" class=\"px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2\" data-testid=\"submit-button\">\n        Submit\n      </button>\n    </div>\n  </form>\n</div>\n"
+            "templateData": "<div class=\"p-6 max-w-2xl mx-auto h-full flex flex-col\" >\n  <h2 class=\"text-2xl font-bold mb-6 text-gray-800\">Dynamic Form</h2>\n  <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\" class=\"space-y-2\" [attr.data-testid]=\"'dynamic-form'\">\n    <ng-container *ngFor=\"let field of fields;trackBy: trackByFn\">\n      <div [ngSwitch]=\"field.type\">\n        <!-- Text Input -->\n        <mat-form-field *ngSwitchCase=\"'text'\" class=\"w-full\" [attr.data-testid]=\"'text-field-' + field.name\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <input\n            matInput\n            [formControlName]=\"field.name\"\n            class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\"\n            [attr.data-testid]=\"field.name + '-input'\"\n          />\n        </mat-form-field>\n\n        <!-- Number Input -->\n        <mat-form-field *ngSwitchCase=\"'number'\" class=\"w-full\" [attr.data-testid]=\"'number-field-' + field.name\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <input\n            matInput\n            type=\"number\"\n            [formControlName]=\"field.name\"\n            class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\"\n            [attr.data-testid]=\"field.name + '-input'\"\n          />\n        </mat-form-field>\n\n        <!-- Date Input -->\n        <mat-form-field *ngSwitchCase=\"'date'\" class=\"w-full\" [attr.data-testid]=\"'date-field-' + field.name\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <input\n            matInput\n            [matDatepicker]=\"datePickers\"\n            [formControlName]=\"field.name\"\n            class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\"\n            [attr.data-testid]=\"field.name + '-input'\"\n          />\n          <mat-datepicker-toggle matSuffix [for]=\"datePickers\"></mat-datepicker-toggle>\n          <mat-datepicker #datePickers></mat-datepicker>\n        </mat-form-field>\n\n        <!-- Checkbox -->\n        <div *ngSwitchCase=\"'boolean'\" class=\"flex items-center\" [attr.data-testid]=\"'boolean-field-' + field.name\">\n          <mat-checkbox\n            [formControlName]=\"field.name\"\n            class=\"text-gray-700\"\n            [attr.data-testid]=\"field.name + '-checkbox'\"\n          >\n            {{ field.displayName }}\n          </mat-checkbox>\n        </div>\n\n        <!-- Select -->\n        <mat-form-field *ngSwitchCase=\"'select'\" class=\"w-full\" [attr.data-testid]=\"'select-field-' + field.name\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <mat-select\n            [formControlName]=\"field.name\"\n            class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\"\n            [attr.data-testid]=\"field.name + '-select'\"\n          >\n            <mat-option\n              *ngFor=\"let option of field.options\"\n              [value]=\"option.value\"\n              [attr.data-testid]=\"field.name + '-option-' + option.value\"\n            >\n              {{ option.displayName }}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <!-- Multi-Select -->\n        <mat-form-field *ngSwitchCase=\"'multi-select'\" class=\"w-full\" [attr.data-testid]=\"'multi-select-field-' + field.name\">\n          <mat-label>{{ field.displayName }}</mat-label>\n          <mat-select\n            [formControlName]=\"field.name\"\n            multiple\n            class=\"w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500\"\n            [attr.data-testid]=\"field.name + '-multi-select'\"\n          >\n            <mat-option\n              *ngFor=\"let option of field.options\"\n              [value]=\"option.value\"\n              [attr.data-testid]=\"field.name + '-option-' + option.value\"\n            >\n              {{ option.displayName }}\n            </mat-option>\n          </mat-select>\n        </mat-form-field>\n\n        <!-- Radio Group -->\n        <div *ngSwitchCase=\"'radio'\" class=\"w-full\" [attr.data-testid]=\"'radio-field-' + field.name\">\n          <label class=\"block text-gray-700 font-medium mb-2\">{{ field.displayName }}</label>\n          <mat-radio-group [formControlName]=\"field.name\" [attr.data-testid]=\"field.name + '-radio-group'\">\n            <mat-radio-button\n              *ngFor=\"let option of field.options\"\n              [value]=\"option.value\"\n              class=\"block text-gray-600\"\n              [attr.data-testid]=\"field.name + '-radio-' + option.value\"\n            >\n              {{ option.displayName }}\n            </mat-radio-button>\n          </mat-radio-group>\n        </div>\n\n        <!-- Multi-Radio -->\n        <div *ngSwitchCase=\"'multi-radio'\" class=\"w-full\" [attr.data-testid]=\"'multi-radio-field-' + field.name\">\n          <label class=\"block text-gray-700 font-medium mb-2\">{{ field.displayName }}</label>\n          <div *ngFor=\"let option of field.options\" class=\"flex items-center space-x-2\">\n            <mat-checkbox\n              [checked]=\"isOptionChecked(field.name, option.value)\"\n              (change)=\"toggleMultiToggleValue(field.name, option.value, $event.checked)\"\n              class=\"text-gray-600\"\n              [attr.data-testid]=\"field.name + '-multi-radio-' + option.value\"\n            >\n              {{ option.displayName }}\n            </mat-checkbox>\n          </div>\n        </div>\n\n        <!-- Button Toggle -->\n        <div *ngSwitchCase=\"'button-toggle'\" class=\"w-full\" [attr.data-testid]=\"'button-toggle-field-' + field.name\">\n          <label class=\"block text-gray-700 font-medium mb-2\">{{ field.displayName }}</label>\n          <mat-button-toggle-group\n            [formControlName]=\"field.name\"\n            class=\"flex flex-wrap gap-2\"\n            [attr.data-testid]=\"field.name + '-button-toggle-group'\"\n          >\n            <mat-button-toggle\n              *ngFor=\"let option of field.options\"\n              [value]=\"option.value\"\n              class=\"bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500\"\n              [attr.data-testid]=\"field.name + '-button-toggle-' + option.value\"\n            >\n              {{ option.displayName }}\n            </mat-button-toggle>\n          </mat-button-toggle-group>\n        </div>\n\n        <!-- Multi Button Toggle -->\n        <div *ngSwitchCase=\"'multi-button-toggle'\" class=\"w-full\" [attr.data-testid]=\"'multi-button-toggle-field-' + field.name\">\n          <label class=\"block text-gray-700 font-medium mb-2\">{{ field.displayName }}</label>\n          <mat-button-toggle-group\n            [formControlName]=\"field.name\"\n            [multiple]=\"true\"\n            class=\"flex flex-wrap gap-2\"\n            [attr.data-testid]=\"field.name + '-multi-button-toggle-group'\"\n          >\n            <mat-button-toggle\n              *ngFor=\"let option of field.options\"\n              [value]=\"option.value\"\n              [checked]=\"isOptionChecked(field.name, option.value)\"\n              (change)=\"toggleMultiToggleValue(field.name, option.value, $event.source.checked)\"\n              class=\"bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500\"\n              [attr.data-testid]=\"field.name + '-multi-button-toggle-' + option.value\"\n            >\n              {{ option.displayName }}\n            </mat-button-toggle>\n          </mat-button-toggle-group>\n        </div>\n      </div>\n    </ng-container>\n\n    <div\n      class=\"flex w-full justify-end gap-4 p-4 border-t border-gray-200 bg-white sticky bottom-0\"\n      [attr.data-testid]=\"'form-actions'\"\n    >\n      <button\n        mat-raised-button\n        type=\"button\"\n        color=\"warn\"\n        class=\"px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2\"\n        *ngIf=\"isModal\"\n        (click)=\"onCancel()\"\n        [attr.data-testid]=\"'cancel-button'\"\n      >\n        Cancel\n      </button>\n      <button\n        mat-raised-button\n        color=\"primary\"\n        type=\"submit\"\n        class=\"px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2\"\n        [attr.data-testid]=\"'submit-button'\"\n      >\n        Submit\n      </button>\n    </div>\n  </form>\n</div>\n"
         },
         {
             "name": "DynamicFormComponent",
-            "id": "component-DynamicFormComponent-3e8c47dbe8c0252a0f74328fe713f8b726c9554bba60062a1e3c2d04d274be78b707d9f675b5d3b2045d8551811327d444cf56bbbca263afae11fdbbd89a72fc",
+            "id": "component-DynamicFormComponent-aef45724bdd1a4e688d6c972303558f57bc50e1ecfb7504cef413328a5b89fb10372e77f4088371f701cb560a25479af42b6dbf069a9b4b20894a8c2198f36f1",
             "file": "src/app/core/lib/dinamic-form/dynamic-form/dynamic-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -23430,52 +23603,89 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "fields",
-                    "defaultValue": "[]",
+                    "name": "isModal",
+                    "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18,
-                    "type": "Field[]",
-                    "decorators": []
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "required": false
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "formCancel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "required": false
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "fields",
+                    "defaultValue": "input.required<Field[]>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "formCancel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "required": false
+                },
+                {
+                    "name": "formSubmit",
+                    "defaultValue": "output<Record<string, any>>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
                 },
                 {
                     "name": "isModal",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
                     "line": 20,
-                    "type": "boolean",
-                    "decorators": []
+                    "required": false
                 },
                 {
                     "name": "value",
-                    "defaultValue": "{}",
+                    "defaultValue": "input<Record<string, any>>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
-                    "type": "Record<string | any>",
-                    "decorators": []
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
                 }
             ],
-            "outputsClass": [
-                {
-                    "name": "formCancel",
-                    "defaultValue": "new EventEmitter<void>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "EventEmitter"
-                },
-                {
-                    "name": "formSubmit",
-                    "defaultValue": "new EventEmitter<Record<string, any>>()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 22,
-                    "type": "EventEmitter"
-                }
-            ],
-            "propertiesClass": [],
             "methodsClass": [
                 {
                     "name": "onFormCancel",
@@ -23483,7 +23693,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 46,
+                    "line": 52,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -23500,7 +23710,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
+                    "line": 48,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -23521,7 +23731,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 27,
+                    "line": 29,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -23547,7 +23757,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {Component, EventEmitter, Input, Output} from '@angular/core';\nimport {DynamicFormBodyComponent} from '../dynamic-form-body/dynamic-form-body.component';\nimport {NgIf} from '@angular/common';\nimport {MatButtonModule} from '@angular/material/button';\nimport {Field} from '../dynamic-form-body/field.model';\nimport {MatDialog} from '@angular/material/dialog';\n\n@Component({\n  selector: 'app-dynamic-form',\n  imports: [\n    DynamicFormBodyComponent,\n    NgIf,\n    MatButtonModule\n  ],\n  templateUrl: './dynamic-form.component.html'\n})\nexport class DynamicFormComponent {\n  @Input() fields: Field[] = [];\n  @Input() value: Record<string, any> = {};\n  @Input() isModal: boolean = false;\n\n  @Output() formSubmit = new EventEmitter<Record<string, any>>();\n  @Output() formCancel = new EventEmitter<void>();\n\n  constructor(private dialog: MatDialog) {}\n\n  openModal(): void {\n    const dialogRef = this.dialog.open(DynamicFormBodyComponent, {\n      width: '500px',\n      data: { fields: this.fields, value: this.value },\n    });\n\n    dialogRef.afterClosed().subscribe((result) => {\n      if (result) {\n        this.formSubmit.emit(result);\n      } else {\n        this.formCancel.emit();\n      }\n    });\n  }\n\n  onFormSubmit(value: Record<string, any>): void {\n    this.formSubmit.emit(value);\n  }\n\n  onFormCancel(): void {\n    this.formCancel.emit();\n  }\n}\n",
+            "sourceCode": "import {Component, input, output} from '@angular/core';\nimport {DynamicFormBodyComponent} from '../dynamic-form-body/dynamic-form-body.component';\nimport {NgIf} from '@angular/common';\nimport {MatButtonModule} from '@angular/material/button';\nimport {Field} from '../dynamic-form-body/field.model';\nimport {MatDialog} from '@angular/material/dialog';\n\n@Component({\n  selector: 'app-dynamic-form',\n  imports: [\n    DynamicFormBodyComponent,\n    NgIf,\n    MatButtonModule\n  ],\n  templateUrl: './dynamic-form.component.html'\n})\nexport class DynamicFormComponent {\n  fields = input.required<Field[]>();\n  value = input<Record<string, any>>();\n  isModal = input<boolean>(false);\n\n\n  formSubmit = output<Record<string, any>>();\n  formCancel = output();\n\n  constructor(private dialog: MatDialog) {\n  }\n\n  openModal(): void {\n    // const dialogRef = this.dialog.open(DynamicFormBodyComponent, {\n    //   data: {fields: this.fields(), value: this.value()},\n    //   panelClass: 'custom-modal'\n    // });\n\n    const dialogRef = this.dialog.open(DynamicFormBodyComponent, {\n      data: { fields: this.fields(), value: this.value() },\n      height: '90vh',\n    });\n    dialogRef.afterClosed().subscribe((result) => {\n      if (result) {\n        this.formSubmit.emit(result);\n      } else {\n        this.formCancel.emit();\n      }\n    });\n  }\n\n  onFormSubmit(value: Record<string, any>): void {\n    this.formSubmit.emit(value);\n  }\n\n  onFormCancel(): void {\n    this.formCancel.emit();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -23564,7 +23774,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 23,
+                "line": 24,
                 "jsdoctags": [
                     {
                         "name": "dialog",
@@ -23578,7 +23788,7 @@
                 ]
             },
             "extends": [],
-            "templateData": "<div *ngIf=\"isModal; else directForm\" class=\"flex justify-end\">\n  <button\n    mat-raised-button\n    color=\"primary\"\n    class=\"px-4 py-2\"\n    (click)=\"openModal()\"\n  >\n    Open Form\n  </button>\n</div>\n\n<ng-template #directForm>\n  <app-dynamic-form-body\n    [fields]=\"fields\"\n    [value]=\"value\"\n    (formSubmit)=\"onFormSubmit($event)\"\n    (formCancel)=\"onFormCancel()\"\n  ></app-dynamic-form-body>\n</ng-template>\n"
+            "templateData": "<div *ngIf=\"isModal(); else directForm\" class=\"flex justify-end\">\n  <button\n    mat-raised-button\n    color=\"primary\"\n    class=\"px-4 py-2\"\n    (click)=\"openModal()\"\n  >\n    Open Form\n  </button>\n</div>\n\n<ng-template #directForm>\n  <app-dynamic-form-body\n    [fieldsInput]=\"fields()\"\n    [valueInput]=\"value()\"\n    (formSubmit)=\"onFormSubmit($event)\"\n    (formCancel)=\"onFormCancel()\"\n  ></app-dynamic-form-body>\n</ng-template>\n"
         },
         {
             "name": "EditClientComponent",
@@ -24203,7 +24413,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
-                "defaultValue": "{\n  providers: [provideZoneChangeDetection({eventCoalescing: true}),\n    provideRouter(routes),\n    provideAnimationsAsync(),\n    {\n      provide: LOCALE_ID,\n      useValue: 'es',\n    }\n\n  ]\n}"
+                "defaultValue": "{\n  providers: [\n    provideExperimentalZonelessChangeDetection(),\n    provideRouter(routes),\n    provideAnimationsAsync(),\n    {\n      provide: LOCALE_ID,\n      useValue: 'es',\n    },\n    provideAnimationsAsync(),\n    {\n      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,\n      useValue: {\n        subscriptSizing: 'dynamic'\n      }\n    }\n  ]\n}"
             },
             {
                 "name": "BASE_PATH",
@@ -24350,7 +24560,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
-                    "defaultValue": "{\n  providers: [provideZoneChangeDetection({eventCoalescing: true}),\n    provideRouter(routes),\n    provideAnimationsAsync(),\n    {\n      provide: LOCALE_ID,\n      useValue: 'es',\n    }\n\n  ]\n}"
+                    "defaultValue": "{\n  providers: [\n    provideExperimentalZonelessChangeDetection(),\n    provideRouter(routes),\n    provideAnimationsAsync(),\n    {\n      provide: LOCALE_ID,\n      useValue: 'es',\n    },\n    provideAnimationsAsync(),\n    {\n      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,\n      useValue: {\n        subscriptSizing: 'dynamic'\n      }\n    }\n  ]\n}"
                 }
             ],
             "src/app/core/services/openapi/variables.ts": [
@@ -24496,7 +24706,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -24587,7 +24797,7 @@
                 "linktype": "component",
                 "name": "DynamicFormBodyComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/15",
+                "coverageCount": "0/20",
                 "status": "low"
             },
             {
@@ -24614,7 +24824,7 @@
                 "linktype": "component",
                 "name": "DynamicFormComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/10",
+                "coverageCount": "0/12",
                 "status": "low"
             },
             {

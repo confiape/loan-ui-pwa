@@ -1,46 +1,60 @@
-import {Component, input, OnInit, output} from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {NgIf} from '@angular/common';
-import {NewLoan} from '../loan-card.component.models';
+import {Component, input, OnInit} from '@angular/core';
+import {ReactiveFormsModule, Validators} from '@angular/forms';
+import {DynamicFormComponent} from '../../../core/lib/dinamic-form/dynamic-form/dynamic-form.component';
+import {Field} from '../../../core/lib/dinamic-form/dynamic-form-body/field.model';
 
 @Component({
   selector: 'app-create-loan',
   imports: [
     ReactiveFormsModule,
-    NgIf
+    DynamicFormComponent
   ],
   templateUrl: './create-loan.component.html'
 })
 export class CreateLoanComponent implements OnInit {
-  loanForm!: FormGroup;
-  clientName = input.required<string>();
-  clientId = input.required<string>();
-
-  onLoanCreate = output<{ loan: NewLoan, id: string }>()
-
-  constructor(private fb: FormBuilder) {
-  }
-
-  ngOnInit() {
-    this.loanForm = this.fb.group({
-      amount: ['', [Validators.required, Validators.min(0)]],
-      date: ['', Validators.required],
-      duration: ['27', [Validators.required, Validators.min(1)]],
-      interestRate: ['8.4', [Validators.required, Validators.min(0), Validators.max(100)]],
-      loanType: ['daily', Validators.required],
-    });
-  }
-
-  onSubmit() {
-    if (this.loanForm.valid) {
-      this.onLoanCreate.emit({
-        id: this.clientId(),
-        loan: this.loanForm.value
-      })
+  name = input.required<string>();
+  fields: Field[] = [
+    {
+      name: 'amount',
+      type: 'number',
+      displayName: 'Monto',
+      validators: [Validators.required, Validators.min(0), Validators.max(10000)]
+    },
+    {
+      name: 'interest',
+      type: 'number',
+      displayName: 'Interes',
+      validators: [Validators.required, Validators.min(0), Validators.max(100)]
+    },
+    {
+      name: 'numberDate',
+      type: 'number',
+      displayName: 'Numero de dias',
+      validators: [Validators.required, Validators.min(0), Validators.max(32)]
+    },
+    {
+      name: 'type',
+      type: 'radio',
+      displayName: 'LoanType',
+      options: [
+        {
+          value: 'Dayli',
+          displayName: 'Diario',
+        },
+        {
+          value: 'Weekly',
+          displayName: 'Semanal',
+        },
+        {
+          value: 'Monthly',
+          displayName: 'Mensual',
+        },
+      ],
+      validators: [Validators.required, Validators.min(0), Validators.max(32)]
     }
+  ];
+
+  ngOnInit(): void {
   }
 
-  onCancel() {
-
-  }
 }

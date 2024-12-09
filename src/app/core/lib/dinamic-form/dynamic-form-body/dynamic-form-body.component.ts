@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Inject, Input, OnInit, Optional, Output} from '@angular/core';
+import {Component, Inject, input, OnInit, Optional, output,} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
@@ -34,37 +34,51 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
   providers: [provideNativeDateAdapter()]
 })
 export class DynamicFormBodyComponent implements OnInit {
-  @Input() fields: Field[] = [];
-  @Input() value: Record<string, any> = {};
-  @Output() formSubmit = new EventEmitter<Record<string, any>>();
-  @Output() formCancel = new EventEmitter<void>();
+  fieldsInput = input<Field[]>();
+  valueInput = input<Record<string, any>>();
+  titleInput = input<string>();
+
+  fields: Field[] = [];
+  value: Record<string, any> = {};
+  title = ""
+
+  formSubmit = output<Record<string, any>>();
+  formCancel = output();
 
   form!: FormGroup;
-  isModal: boolean;
+  isModal: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     @Optional() private dialogRef?: MatDialogRef<DynamicFormBodyComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data?: { fields: Field[]; value: any }
   ) {
-    this.isModal = !!this.dialogRef;
 
-    if (this.isModal && this.data) {
-      this.fields = this.data.fields;
-      this.value = this.data.value;
-    }
   }
 
   ngOnInit(): void {
+    this.isModal = !!this.dialogRef;
+
+    if (this.isModal && this.data) {
+      this.fields = this.data?.fields;
+      this.value = this.data?.value;
+    }
+    if (!this.isModal) {
+      this.fields = this.fieldsInput() ?? [];
+      this.value = this.valueInput() ?? {};
+      this.title = this.titleInput() ?? ""
+    }
     this.buildForm();
+
   }
 
   buildForm(): void {
     const controls: Record<string, any> = {};
 
-    this.fields.forEach((field) => {
+    this.fields?.forEach((field) => {
+      let val = this.value;
       controls[field.name] = [
-        this.value[field.name] || (field.type === 'multi-radio' || field.type === 'multi-select' ? [] : ''),
+        val && val[field.name] || (field.type === 'multi-radio' || field.type === 'multi-select' ? [] : ''),
         field.validators || [],
       ];
     });
@@ -72,7 +86,7 @@ export class DynamicFormBodyComponent implements OnInit {
     this.form = this.fb.group(controls);
   }
 
-  toggleMultiRadioValue(fieldName: string, value: any, checked: boolean): void {
+  toggleMultiToggleValue(fieldName: string, value: any, checked: boolean): void {
     const control = this.form.get(fieldName);
     if (control) {
       let currentValue = control.value || [];
@@ -95,7 +109,6 @@ export class DynamicFormBodyComponent implements OnInit {
     return Array.isArray(currentValue) && currentValue.includes(value);
   }
 
-
   onSubmit(): void {
     if (this.form.valid) {
       if (this.isModal) {
@@ -114,5 +127,8 @@ export class DynamicFormBodyComponent implements OnInit {
     }
   }
 
+  trackByFn(index: number, field: Field): string {
+    return field.name;
+  }
 }
 

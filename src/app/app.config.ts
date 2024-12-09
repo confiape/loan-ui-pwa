@@ -1,21 +1,34 @@
-import {ApplicationConfig, LOCALE_ID, provideZoneChangeDetection} from '@angular/core';
+import {
+  ApplicationConfig,
+  LOCALE_ID,
+  provideExperimentalZonelessChangeDetection,
+  provideZoneChangeDetection
+} from '@angular/core';
 import {provideRouter} from '@angular/router';
 
 import {routes} from './app.routes';
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
 import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 registerLocaleData(localeEs, 'es');
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({eventCoalescing: true}),
+  providers: [
+    provideExperimentalZonelessChangeDetection(),
     provideRouter(routes),
     provideAnimationsAsync(),
     {
       provide: LOCALE_ID,
       useValue: 'es',
+    },
+    provideAnimationsAsync(),
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: {
+        subscriptSizing: 'dynamic'
+      }
     }
-
   ]
 };

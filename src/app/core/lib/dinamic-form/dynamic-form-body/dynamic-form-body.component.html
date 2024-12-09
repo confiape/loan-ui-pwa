@@ -1,90 +1,159 @@
-<div class="bg-white shadow-md rounded-lg p-6 max-w-2xl mx-auto">
-  <h2 class="text-2xl font-bold mb-6 text-gray-800">Dynamic Form</h2>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-2 " data-testid="dynamic-form">
-    <ng-container *ngFor="let field of fields">
+<div class="p-6 max-w-2xl mx-auto h-full flex flex-col" >
+  <h2 class="text-2xl font-bold mb-6 text-gray-800">{{ title }}</h2>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-2" [attr.data-testid]="'dynamic-form'">
+    <ng-container *ngFor="let field of fields;trackBy: trackByFn">
       <div [ngSwitch]="field.type">
         <!-- Text Input -->
-        <mat-form-field *ngSwitchCase="'text'" class="w-full" data-testid="text-field">
+        <mat-form-field *ngSwitchCase="'text'" class="w-full" [attr.data-testid]="'text-field-' + field.name">
           <mat-label>{{ field.displayName }}</mat-label>
-          <input matInput [formControlName]="field.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" data-testid="{{ field.name }}-input" />
+          <input
+            matInput
+            [formControlName]="field.name"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [attr.data-testid]="field.name + '-input'"
+          />
         </mat-form-field>
 
         <!-- Number Input -->
-        <mat-form-field *ngSwitchCase="'number'" class="w-full" data-testid="number-field">
+        <mat-form-field *ngSwitchCase="'number'" class="w-full" [attr.data-testid]="'number-field-' + field.name">
           <mat-label>{{ field.displayName }}</mat-label>
-          <input matInput type="number" [formControlName]="field.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" data-testid="{{ field.name }}-input" />
+          <input
+            matInput
+            type="number"
+            [formControlName]="field.name"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [attr.data-testid]="field.name + '-input'"
+          />
         </mat-form-field>
 
         <!-- Date Input -->
-        <mat-form-field *ngSwitchCase="'date'" class="w-full" data-testid="date-field">
+        <mat-form-field *ngSwitchCase="'date'" class="w-full" [attr.data-testid]="'date-field-' + field.name">
           <mat-label>{{ field.displayName }}</mat-label>
-          <input matInput [matDatepicker]="datePickers" [formControlName]="field.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" data-testid="{{ field.name }}-input" />
+          <input
+            matInput
+            [matDatepicker]="datePickers"
+            [formControlName]="field.name"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [attr.data-testid]="field.name + '-input'"
+          />
           <mat-datepicker-toggle matSuffix [for]="datePickers"></mat-datepicker-toggle>
           <mat-datepicker #datePickers></mat-datepicker>
         </mat-form-field>
 
         <!-- Checkbox -->
-        <div *ngSwitchCase="'boolean'" class="flex items-center" data-testid="boolean-field">
-          <mat-checkbox [formControlName]="field.name" class="text-gray-700" data-testid="{{ field.name }}-checkbox">
+        <div *ngSwitchCase="'boolean'" class="flex items-center" [attr.data-testid]="'boolean-field-' + field.name">
+          <mat-checkbox
+            [formControlName]="field.name"
+            class="text-gray-700"
+            [attr.data-testid]="field.name + '-checkbox'"
+          >
             {{ field.displayName }}
           </mat-checkbox>
         </div>
 
         <!-- Select -->
-        <mat-form-field *ngSwitchCase="'select'" class="w-full" data-testid="select-field">
+        <mat-form-field *ngSwitchCase="'select'" class="w-full" [attr.data-testid]="'select-field-' + field.name">
           <mat-label>{{ field.displayName }}</mat-label>
-          <mat-select [formControlName]="field.name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" data-testid="{{ field.name }}-select">
-            <mat-option *ngFor="let option of field.options" [value]="option.value" data-testid="{{ field.name }}-option-{{ option.value }}">
+          <mat-select
+            [formControlName]="field.name"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [attr.data-testid]="field.name + '-select'"
+          >
+            <mat-option
+              *ngFor="let option of field.options"
+              [value]="option.value"
+              [attr.data-testid]="field.name + '-option-' + option.value"
+            >
               {{ option.displayName }}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
         <!-- Multi-Select -->
-        <mat-form-field *ngSwitchCase="'multi-select'" class="w-full" data-testid="multi-select-field">
+        <mat-form-field *ngSwitchCase="'multi-select'" class="w-full" [attr.data-testid]="'multi-select-field-' + field.name">
           <mat-label>{{ field.displayName }}</mat-label>
-          <mat-select [formControlName]="field.name" multiple class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" data-testid="{{ field.name }}-multi-select">
-            <mat-option *ngFor="let option of field.options" [value]="option.value" data-testid="{{ field.name }}-option-{{ option.value }}">
+          <mat-select
+            [formControlName]="field.name"
+            multiple
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            [attr.data-testid]="field.name + '-multi-select'"
+          >
+            <mat-option
+              *ngFor="let option of field.options"
+              [value]="option.value"
+              [attr.data-testid]="field.name + '-option-' + option.value"
+            >
               {{ option.displayName }}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
         <!-- Radio Group -->
-        <div *ngSwitchCase="'radio'" class="w-full" data-testid="radio-field">
+        <div *ngSwitchCase="'radio'" class="w-full" [attr.data-testid]="'radio-field-' + field.name">
           <label class="block text-gray-700 font-medium mb-2">{{ field.displayName }}</label>
-          <mat-radio-group [formControlName]="field.name" data-testid="{{ field.name }}-radio-group">
-            <mat-radio-button *ngFor="let option of field.options" [value]="option.value" class="block text-gray-600" data-testid="{{ field.name }}-radio-{{ option.value }}">
+          <mat-radio-group [formControlName]="field.name" [attr.data-testid]="field.name + '-radio-group'">
+            <mat-radio-button
+              *ngFor="let option of field.options"
+              [value]="option.value"
+              class="block text-gray-600"
+              [attr.data-testid]="field.name + '-radio-' + option.value"
+            >
               {{ option.displayName }}
             </mat-radio-button>
           </mat-radio-group>
         </div>
 
         <!-- Multi-Radio -->
-        <div *ngSwitchCase="'multi-radio'" class="w-full" data-testid="multi-radio-field">
+        <div *ngSwitchCase="'multi-radio'" class="w-full" [attr.data-testid]="'multi-radio-field-' + field.name">
           <label class="block text-gray-700 font-medium mb-2">{{ field.displayName }}</label>
           <div *ngFor="let option of field.options" class="flex items-center space-x-2">
-            <mat-checkbox [checked]="isOptionChecked(field.name, option.value)" (change)="toggleMultiRadioValue(field.name, option.value, $event.checked)" class="text-gray-600" data-testid="{{ field.name }}-multi-radio-{{ option.value }}">
+            <mat-checkbox
+              [checked]="isOptionChecked(field.name, option.value)"
+              (change)="toggleMultiToggleValue(field.name, option.value, $event.checked)"
+              class="text-gray-600"
+              [attr.data-testid]="field.name + '-multi-radio-' + option.value"
+            >
               {{ option.displayName }}
             </mat-checkbox>
           </div>
         </div>
 
         <!-- Button Toggle -->
-        <div *ngSwitchCase="'button-toggle'" class="w-full" data-testid="button-toggle-field">
+        <div *ngSwitchCase="'button-toggle'" class="w-full" [attr.data-testid]="'button-toggle-field-' + field.name">
           <label class="block text-gray-700 font-medium mb-2">{{ field.displayName }}</label>
-          <mat-button-toggle-group [formControlName]="field.name" class="flex flex-wrap gap-2" data-testid="{{ field.name }}-button-toggle-group">
-            <mat-button-toggle *ngFor="let option of field.options" [value]="option.value" class="bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500" data-testid="{{ field.name }}-button-toggle-{{ option.value }}">
+          <mat-button-toggle-group
+            [formControlName]="field.name"
+            class="flex flex-wrap gap-2"
+            [attr.data-testid]="field.name + '-button-toggle-group'"
+          >
+            <mat-button-toggle
+              *ngFor="let option of field.options"
+              [value]="option.value"
+              class="bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              [attr.data-testid]="field.name + '-button-toggle-' + option.value"
+            >
               {{ option.displayName }}
             </mat-button-toggle>
           </mat-button-toggle-group>
         </div>
 
         <!-- Multi Button Toggle -->
-        <div *ngSwitchCase="'multi-button-toggle'" class="w-full" data-testid="multi-button-toggle-field">
+        <div *ngSwitchCase="'multi-button-toggle'" class="w-full" [attr.data-testid]="'multi-button-toggle-field-' + field.name">
           <label class="block text-gray-700 font-medium mb-2">{{ field.displayName }}</label>
-          <mat-button-toggle-group [formControlName]="field.name" [multiple]="true" class="flex flex-wrap gap-2" data-testid="{{ field.name }}-multi-button-toggle-group">
-            <mat-button-toggle *ngFor="let option of field.options" [value]="option.value" [checked]="isOptionChecked(field.name, option.value)" (change)="toggleMultiToggleValue(field.name, option.value, $event.source.checked)" class="bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500" data-testid="{{ field.name }}-multi-button-toggle-{{ option.value }}">
+          <mat-button-toggle-group
+            [formControlName]="field.name"
+            [multiple]="true"
+            class="flex flex-wrap gap-2"
+            [attr.data-testid]="field.name + '-multi-button-toggle-group'"
+          >
+            <mat-button-toggle
+              *ngFor="let option of field.options"
+              [value]="option.value"
+              [checked]="isOptionChecked(field.name, option.value)"
+              (change)="toggleMultiToggleValue(field.name, option.value, $event.source.checked)"
+              class="bg-gray-100 text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              [attr.data-testid]="field.name + '-multi-button-toggle-' + option.value"
+            >
               {{ option.displayName }}
             </mat-button-toggle>
           </mat-button-toggle-group>
@@ -92,11 +161,28 @@
       </div>
     </ng-container>
 
-    <div class="flex justify-end space-x-4 mt-8">
-      <button mat-raised-button type="button" color="warn" class="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2" *ngIf="isModal" (click)="onCancel()" data-testid="cancel-button">
+    <div
+      class="flex w-full justify-end gap-4 p-4 border-t border-gray-200 bg-white sticky bottom-0"
+      [attr.data-testid]="'form-actions'"
+    >
+      <button
+        mat-raised-button
+        type="button"
+        color="warn"
+        class="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+        *ngIf="isModal"
+        (click)="onCancel()"
+        [attr.data-testid]="'cancel-button'"
+      >
         Cancel
       </button>
-      <button mat-raised-button color="primary" type="submit" class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" data-testid="submit-button">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        [attr.data-testid]="'submit-button'"
+      >
         Submit
       </button>
     </div>

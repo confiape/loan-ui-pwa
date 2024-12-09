@@ -1,12 +1,16 @@
 import {Component} from '@angular/core';
 import {EditClient} from './components/loan/loan-card.component.models';
 import {SimpleLoanDtoAndPayments} from './core/services/openapi';
-import {EditClientComponent} from './components/client/edit-client/edit-client.component';
+
+import {Validators} from '@angular/forms';
+import {Field} from './core/lib/dinamic-form/dynamic-form-body/field.model';
+import {CreateLoanComponent} from './components/loan/create-loan/create-loan.component';
+import {LoginComponent} from './pages/login/login.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    EditClientComponent
+    LoginComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -132,5 +136,63 @@ export class AppComponent {
       },
     ],
   };
+  fields: Field[] = [
+    {name: 'username', type: 'text', displayName: 'Username', validators: [Validators.required]},
+    {
+      name: 'password',
+      type: 'text',
+      displayName: 'Password',
+      validators: [Validators.required, Validators.minLength(8)]
+    },
+    {
+      name: 'role', type: 'select', displayName: 'Role', options: [
+        {value: 'admin', displayName: 'Admin'},
+        {value: 'user', displayName: 'User'},
+        {value: 'guest', displayName: 'Guest'},
+      ]
+    },
+    {
+      name: 'preferences', type: 'multi-select', displayName: 'Preferences', options: [
+        {value: 'notifications', displayName: 'Notifications'},
+        {value: 'dark_mode', displayName: 'Dark Mode'},
+      ]
+    },
+    {
+      name: 'gender', type: 'radio', displayName: 'Gender', options: [
+        {value: 'male', displayName: 'Male'},
+        {value: 'female', displayName: 'Female'},
+      ]
+    },
+    {
+      name: 'features', type: 'multi-radio', displayName: 'Features', options: [
+        {value: 'reports', displayName: 'Reports'},
+        {value: 'analytics', displayName: 'Analytics'},
+      ]
+    },
+    {
+      name: 'theme', type: 'button-toggle', displayName: 'Theme', options: [
+        {value: 'dark', displayName: 'Dark'},
+        {value: 'light', displayName: 'Light'},
+      ]
+    },
+    {
+      name: 'modules', type: 'multi-button-toggle', displayName: 'Modules', options: [
+        {value: 'dashboard', displayName: 'Dashboard'},
+        {value: 'settings', displayName: 'Settings'},
+      ]
+    },
+  ];
 
+  value = {
+    username: 'John Doe',
+    password: 'ware'
+  };
+
+  onFormSubmit(value: Record<string, any>): void {
+    console.log('Form Submitted:', value);
+  }
+
+  onFormCancel(): void {
+    console.log('Form Canceled');
+  }
 }

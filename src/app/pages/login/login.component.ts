@@ -56,7 +56,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
     const userData = JSON.parse(jsonPayload);
     this._authenticateService.apiAuthenticateLoginWithGoogleTokenPost({
       accessToken: jwtToken
-    }).subscribe()
+    }).subscribe({
+      next: (data) => {console.log({"sed":"dd"})},
+      error: (error) => {console.log(error)},
+      complete: () => {console.log("complete")}
+    })
     console.log('User Data:', userData);
   }
 }

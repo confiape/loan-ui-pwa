@@ -12,7 +12,7 @@
 export interface BasicBorrowerClientWithTags { 
     id?: string;
     name?: string | null;
-    tags?: Array<string> | null;
+    tags?: string[] | null;
     paymentToday?: number;
 }
 

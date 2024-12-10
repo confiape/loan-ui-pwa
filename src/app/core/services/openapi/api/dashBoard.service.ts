@@ -7,7 +7,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-/* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
@@ -98,10 +97,10 @@ export class DashBoardService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiDashBoardGetAverageInterestByMonthGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<AverageInterestByMonthDto>>;
-    public apiDashBoardGetAverageInterestByMonthGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<AverageInterestByMonthDto>>>;
-    public apiDashBoardGetAverageInterestByMonthGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<AverageInterestByMonthDto>>>;
-    public apiDashBoardGetAverageInterestByMonthGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiDashBoardGetAverageInterestByMonthGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<AverageInterestByMonthDto[]>;
+    public apiDashBoardGetAverageInterestByMonthGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<AverageInterestByMonthDto[]>>;
+    public apiDashBoardGetAverageInterestByMonthGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<AverageInterestByMonthDto[]>>;
+    public apiDashBoardGetAverageInterestByMonthGet(observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -148,11 +147,11 @@ export class DashBoardService {
             }
         }
 
-        let localVarPath = `/api/DashBoard/GetAverageInterestByMonth`;
-        return this.httpClient.request<Array<AverageInterestByMonthDto>>('get', `${this.configuration.basePath}${localVarPath}`,
+        const localVarPath = `/api/DashBoard/GetAverageInterestByMonth`;
+        return this.httpClient.request<AverageInterestByMonthDto[]>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: <any>responseType_,
+                responseType: responseType_ as any,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -166,10 +165,10 @@ export class DashBoardService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiDashBoardGetLoansByMonthGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<{ [key: string]: Array<LoansByMonthDtoMetadata>; }>;
-    public apiDashBoardGetLoansByMonthGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<{ [key: string]: Array<LoansByMonthDtoMetadata>; }>>;
-    public apiDashBoardGetLoansByMonthGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<{ [key: string]: Array<LoansByMonthDtoMetadata>; }>>;
-    public apiDashBoardGetLoansByMonthGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiDashBoardGetLoansByMonthGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Record<string, LoansByMonthDtoMetadata[]>>;
+    public apiDashBoardGetLoansByMonthGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Record<string, LoansByMonthDtoMetadata[]>>>;
+    public apiDashBoardGetLoansByMonthGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Record<string, LoansByMonthDtoMetadata[]>>>;
+    public apiDashBoardGetLoansByMonthGet(observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -216,11 +215,11 @@ export class DashBoardService {
             }
         }
 
-        let localVarPath = `/api/DashBoard/GetLoansByMonth`;
-        return this.httpClient.request<{ [key: string]: Array<LoansByMonthDtoMetadata>; }>('get', `${this.configuration.basePath}${localVarPath}`,
+        const localVarPath = `/api/DashBoard/GetLoansByMonth`;
+        return this.httpClient.request<Record<string, LoansByMonthDtoMetadata[]>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: <any>responseType_,
+                responseType: responseType_ as any,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -234,10 +233,10 @@ export class DashBoardService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiDashBoardGetTotalLoanAmountByClientGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<TotalLoanAmountByClientDto>>;
-    public apiDashBoardGetTotalLoanAmountByClientGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<TotalLoanAmountByClientDto>>>;
-    public apiDashBoardGetTotalLoanAmountByClientGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<TotalLoanAmountByClientDto>>>;
-    public apiDashBoardGetTotalLoanAmountByClientGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiDashBoardGetTotalLoanAmountByClientGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<TotalLoanAmountByClientDto[]>;
+    public apiDashBoardGetTotalLoanAmountByClientGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<TotalLoanAmountByClientDto[]>>;
+    public apiDashBoardGetTotalLoanAmountByClientGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<TotalLoanAmountByClientDto[]>>;
+    public apiDashBoardGetTotalLoanAmountByClientGet(observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -284,11 +283,11 @@ export class DashBoardService {
             }
         }
 
-        let localVarPath = `/api/DashBoard/GetTotalLoanAmountByClient`;
-        return this.httpClient.request<Array<TotalLoanAmountByClientDto>>('get', `${this.configuration.basePath}${localVarPath}`,
+        const localVarPath = `/api/DashBoard/GetTotalLoanAmountByClient`;
+        return this.httpClient.request<TotalLoanAmountByClientDto[]>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: <any>responseType_,
+                responseType: responseType_ as any,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,

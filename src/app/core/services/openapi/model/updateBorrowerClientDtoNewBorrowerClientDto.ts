@@ -12,6 +12,6 @@ import { UpdateBorrowerClientDto } from './updateBorrowerClientDto';
 
 export interface UpdateBorrowerClientDtoNewBorrowerClientDto { 
     borrowerClientDto?: UpdateBorrowerClientDto;
-    tagIdList?: Array<string> | null;
+    tagIdList?: string[] | null;
 }
 

@@ -13,8 +13,8 @@ import { TagDto } from './tagDto';
 export interface TagDtoPaginationResponse { 
     pageSize?: number;
     currentPage?: number;
-    orderBy?: Array<string> | null;
+    orderBy?: string[] | null;
     totalItems?: number;
-    result?: Array<TagDto> | null;
+    result?: TagDto[] | null;
 }
 

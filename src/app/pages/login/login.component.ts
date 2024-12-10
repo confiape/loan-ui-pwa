@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {HttpClient} from '@angular/common/http';
 import {AuthenticateService} from '../../core/services/openapi';
+import {Router} from '@angular/router';
 
 declare const google: any;
 
@@ -9,14 +9,11 @@ declare const google: any;
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements AfterViewInit {
 
-  constructor(private httpClient: HttpClient, private _authenticateService: AuthenticateService) {
+  constructor(private router: Router, private _authenticateService: AuthenticateService) {
   }
 
-  ngOnInit(): void {
-
-  }
 
   ngAfterViewInit(): void {
     this.initializeGoogleSignIn();
@@ -43,24 +40,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   private handleCredentialResponse(response: any): void {
     const jwtToken = response.credential;
-    console.log('JWT Token:', jwtToken);
-
-    const base64Url = jwtToken.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split('')
-        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-        .join('')
-    );
-    const userData = JSON.parse(jsonPayload);
     this._authenticateService.apiAuthenticateLoginWithGoogleTokenPost({
       accessToken: jwtToken
     }).subscribe({
-      next: (data) => {console.log({"sed":"dd"})},
-      error: (error) => {console.log(error)},
-      complete: () => {console.log("complete")}
+      next: () => {
+        this.router.navigate(['/home']).then();
+      }
     })
-    console.log('User Data:', userData);
   }
 }

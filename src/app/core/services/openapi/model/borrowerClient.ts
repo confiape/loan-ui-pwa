@@ -29,7 +29,7 @@ export interface BorrowerClient {
     address?: string | null;
     notes?: string | null;
     status?: string | null;
-    loans?: Array<Loan> | null;
-    tagBorrowerClients?: Array<TagBorrowerClient> | null;
+    loans?: Loan[] | null;
+    tagBorrowerClients?: TagBorrowerClient[] | null;
 }
 

@@ -4,8 +4,6 @@ import {SimpleLoanDtoAndPayments} from './core/services/openapi';
 
 import {Validators} from '@angular/forms';
 import {Field} from './core/lib/dinamic-form/dynamic-form-body/field.model';
-import {CreateLoanComponent} from './components/loan/create-loan/create-loan.component';
-import {LoginComponent} from './pages/login/login.component';
 import {RouterOutlet} from '@angular/router';
 
 @Component({

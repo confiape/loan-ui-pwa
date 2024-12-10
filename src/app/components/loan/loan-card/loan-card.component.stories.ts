@@ -14,15 +14,15 @@ const meta: Meta<LoanCardComponent> = {
       control: 'object',
       description: 'Client information including loans',
     },
-    onEditClient: {
+    editedClient: {
       action: 'editClient',
       description: 'Event emitted when editing client information',
     },
-    onViewLoanDetails: {
+    viewedLoanDetails: {
       action: 'viewLoanDetails',
       description: 'Event emitted when viewing loan details',
     },
-    onCreateLoan: {
+    createdLoan: {
       action: 'createLoan',
       description: 'Event emitted when creating a new loan',
     },

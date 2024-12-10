@@ -19,6 +19,6 @@ export interface SimpleLoanDtoAndPayments {
     borrowerClientId?: string;
     totalAmount?: number;
     totalPayment?: number;
-    payments?: Array<SimplePayments> | null;
+    payments?: SimplePayments[] | null;
 }
 

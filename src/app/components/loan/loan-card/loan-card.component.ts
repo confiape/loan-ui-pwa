@@ -15,9 +15,9 @@ import {Loan, Client} from '../loan-card.component.models';
 export class LoanCardComponent {
   client = input.required<Client>();
 
-  onEditClient = output<Client>()
-  onViewLoanDetails = output<Loan>()
-  onCreateLoan = output()
+  editedClient = output<Client>()
+  viewedLoanDetails = output<Loan>()
+  createdLoan = output()
 
   getStatusClass(): string {
     const statusClasses = {
@@ -30,15 +30,15 @@ export class LoanCardComponent {
 
 
   createLoan(): void {
-    this.onCreateLoan.emit()
+    this.createdLoan.emit()
   }
 
   editClient() {
-    this.onEditClient.emit(this.client())
+    this.editedClient.emit(this.client())
   }
 
   viewLoanDetails(loan:Loan) {
-    this.onViewLoanDetails.emit(loan);
+    this.viewedLoanDetails.emit(loan);
   }
 }
 

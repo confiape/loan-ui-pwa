@@ -4,9 +4,9 @@ import {catchError, switchMap} from 'rxjs/operators';
 import {AuthService} from '../services/auth.service';
 
 const excludedUrls: string[] = [
-  '/api/IsAuthenticated', // Ejemplo: Endpoint de autenticación
-  '/api/Authenticate/LoginWithGoogleToken', // Ejemplo: Otros endpoints públicos
-  '/api/Authenticate/GetAuthorizationToken', // Ejemplo: Otros endpoints públicos
+  '/api/IsAuthenticated',
+  '/api/Authenticate/LoginWithGoogleToken',
+  '/api/Authenticate/GetAuthorizationToken',
 ];
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {

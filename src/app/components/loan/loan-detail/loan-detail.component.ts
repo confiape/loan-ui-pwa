@@ -18,8 +18,8 @@ import {FormsModule} from '@angular/forms';
 export class LoanDetailComponent {
   loanDetails = input.required<SimpleLoanDtoAndPayments>();
   // Variables para el nuevo pago
-  paymentAmount: number  = 0;
-  isYape: boolean = false;
+  paymentAmount  = 0;
+  isYape = false;
 
   // Método para registrar un pago
   onSubmitPayment(): void {

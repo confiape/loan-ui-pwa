@@ -16,7 +16,7 @@ export interface BasicBorrowerClientWithTagsAndLoans {
     dni?: string | null;
     phoneNumber?: string | null;
     title?: string | null;
-    tags?: Array<string> | null;
-    loans?: Array<SimpleLoanDtoAndPayments> | null;
+    tags?: string[] | null;
+    loans?: SimpleLoanDtoAndPayments[] | null;
 }
 

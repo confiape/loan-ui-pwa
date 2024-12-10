@@ -2,10 +2,10 @@ import {Component, input, OnInit, output} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {EditClient} from '../../loan/loan-card.component.models';
 import {NgForOf, NgIf} from '@angular/common';
-import {MatButtonToggle, MatButtonToggleGroup, MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatError, MatFormField, MatFormFieldModule} from '@angular/material/form-field';
-import {MatInput, MatInputModule} from '@angular/material/input';
-import {MatButton, MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-edit-client',
@@ -26,8 +26,8 @@ export class EditClientComponent implements OnInit {
   clientData = input.required<EditClient>();
   availableTags = input.required<string[]>();
 
-  onEditClient = output<EditClient>();
-  onCancelEdit = output();
+  editedClient = output<EditClient>();
+  canceledEdit = output();
   editClientForm!: FormGroup;
 
 
@@ -46,10 +46,11 @@ export class EditClientComponent implements OnInit {
 
   onSubmit() {
     if (this.editClientForm.valid) {
-      this.onEditClient.emit(this.editClientForm.value);
+      this.editedClient.emit(this.editClientForm.value);
     }
   }
+
   onCancel() {
-    this.onCancelEdit.emit();
+    this.canceledEdit.emit();
   }
 }

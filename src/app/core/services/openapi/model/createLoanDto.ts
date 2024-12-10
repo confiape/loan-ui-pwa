@@ -15,7 +15,7 @@ export interface CreateLoanDto {
     interest?: number;
     numberDate?: number;
     loanType?: LoanType;
-    suggestedDays?: Array<string> | null;
+    suggestedDays?: string[] | null;
     borrowerClientId?: string;
 }
 export namespace CreateLoanDto {

@@ -18,11 +18,11 @@ const meta: Meta<EditClientComponent> = {
       control: 'object',
       description: 'List of available tags for the client',
     },
-    onEditClient: {
+    editedClient: {
       action: 'editClient',
       description: 'Event emitted when the client information is updated',
     },
-    onCancelEdit: {
+    canceledEdit: {
       action: 'cancelEdit',
       description: 'Event emitted when the edit operation is cancelled',
     },

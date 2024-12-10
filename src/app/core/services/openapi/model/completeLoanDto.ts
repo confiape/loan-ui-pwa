@@ -20,7 +20,7 @@ export interface CompleteLoanDto {
     total?: number;
     totalDebt?: number;
     name?: string | null;
-    tags?: Array<string> | null;
-    payments?: Array<PaymentDto> | null;
+    tags?: string[] | null;
+    payments?: PaymentDto[] | null;
 }
 

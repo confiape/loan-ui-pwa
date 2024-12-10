@@ -46,7 +46,7 @@ export class DynamicFormBodyComponent implements OnInit {
   formCancel = output();
 
   form!: FormGroup;
-  isModal: boolean = false;
+  isModal = false;
 
   constructor(
     private fb: FormBuilder,
@@ -76,7 +76,7 @@ export class DynamicFormBodyComponent implements OnInit {
     const controls: Record<string, any> = {};
 
     this.fields?.forEach((field) => {
-      let val = this.value;
+      const val = this.value;
       controls[field.name] = [
         val && val[field.name] || (field.type === 'multi-radio' || field.type === 'multi-select' ? [] : ''),
         field.validators || [],

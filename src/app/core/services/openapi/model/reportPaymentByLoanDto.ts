@@ -13,13 +13,13 @@ import { ReportPaymentByLoanDetailsDto } from './reportPaymentByLoanDetailsDto';
 export interface ReportPaymentByLoanDto { 
     name?: string | null;
     dni?: string | null;
-    tags?: Array<string> | null;
+    tags?: string[] | null;
     dateTime?: string;
     amount?: number;
     interest?: number;
     totalAmount?: number;
     totalPayment?: number;
     isComplete?: boolean;
-    detailedDtos?: Array<ReportPaymentByLoanDetailsDto> | null;
+    detailedDtos?: ReportPaymentByLoanDetailsDto[] | null;
 }
 

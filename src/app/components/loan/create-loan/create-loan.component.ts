@@ -1,4 +1,4 @@
-import {Component, input, OnInit} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {ReactiveFormsModule, Validators} from '@angular/forms';
 import {DynamicFormComponent} from '../../../core/lib/dinamic-form/dynamic-form/dynamic-form.component';
 import {Field} from '../../../core/lib/dinamic-form/dynamic-form-body/field.model';
@@ -11,7 +11,7 @@ import {Field} from '../../../core/lib/dinamic-form/dynamic-form-body/field.mode
   ],
   templateUrl: './create-loan.component.html'
 })
-export class CreateLoanComponent implements OnInit {
+export class CreateLoanComponent {
   name = input.required<string>();
   fields: Field[] = [
     {
@@ -54,7 +54,5 @@ export class CreateLoanComponent implements OnInit {
     }
   ];
 
-  ngOnInit(): void {
-  }
 
 }

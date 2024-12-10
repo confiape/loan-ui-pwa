@@ -15,7 +15,7 @@ export interface RefinanceDto {
     amount?: number | null;
     interest?: number;
     numberDate?: number;
-    suggestedDays?: Array<string> | null;
+    suggestedDays?: string[] | null;
     loanType?: LoanType;
 }
 export namespace RefinanceDto {

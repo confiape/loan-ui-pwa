@@ -7,7 +7,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-/* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
@@ -103,24 +102,24 @@ export class PaymentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiPaymentGet(pageSize?: number, currentPage?: number, orderBy?: Array<string>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<PaymentDtoPaginationResponse>;
-    public apiPaymentGet(pageSize?: number, currentPage?: number, orderBy?: Array<string>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PaymentDtoPaginationResponse>>;
-    public apiPaymentGet(pageSize?: number, currentPage?: number, orderBy?: Array<string>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PaymentDtoPaginationResponse>>;
-    public apiPaymentGet(pageSize?: number, currentPage?: number, orderBy?: Array<string>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiPaymentGet(pageSize?: number, currentPage?: number, orderBy?: string[], observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<PaymentDtoPaginationResponse>;
+    public apiPaymentGet(pageSize?: number, currentPage?: number, orderBy?: string[], observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PaymentDtoPaginationResponse>>;
+    public apiPaymentGet(pageSize?: number, currentPage?: number, orderBy?: string[], observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PaymentDtoPaginationResponse>>;
+    public apiPaymentGet(pageSize?: number, currentPage?: number, orderBy?: string[], observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (pageSize !== undefined && pageSize !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>pageSize, 'PageSize');
+            (pageSize as any), 'PageSize');
         }
         if (currentPage !== undefined && currentPage !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>currentPage, 'CurrentPage');
+            (currentPage as any), 'CurrentPage');
         }
         if (orderBy) {
             orderBy.forEach((element) => {
                 localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-                  <any>element, 'OrderBy');
+                  (element as any), 'OrderBy');
             })
         }
 
@@ -169,12 +168,12 @@ export class PaymentService {
             }
         }
 
-        let localVarPath = `/api/Payment`;
+        const localVarPath = `/api/Payment`;
         return this.httpClient.request<PaymentDtoPaginationResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
-                responseType: <any>responseType_,
+                responseType: responseType_ as any,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -192,7 +191,7 @@ export class PaymentService {
     public apiPaymentIdGet(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<PaymentDto>;
     public apiPaymentIdGet(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PaymentDto>>;
     public apiPaymentIdGet(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PaymentDto>>;
-    public apiPaymentIdGet(id: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiPaymentIdGet(id: string, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling apiPaymentIdGet.');
         }
@@ -242,11 +241,11 @@ export class PaymentService {
             }
         }
 
-        let localVarPath = `/api/Payment/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
+        const localVarPath = `/api/Payment/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
         return this.httpClient.request<PaymentDto>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: <any>responseType_,
+                responseType: responseType_ as any,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -266,7 +265,7 @@ export class PaymentService {
     public apiPaymentIdPut(id: string, amount?: number, isYape?: boolean, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Payment>;
     public apiPaymentIdPut(id: string, amount?: number, isYape?: boolean, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Payment>>;
     public apiPaymentIdPut(id: string, amount?: number, isYape?: boolean, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Payment>>;
-    public apiPaymentIdPut(id: string, amount?: number, isYape?: boolean, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiPaymentIdPut(id: string, amount?: number, isYape?: boolean, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling apiPaymentIdPut.');
         }
@@ -274,11 +273,11 @@ export class PaymentService {
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (amount !== undefined && amount !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>amount, 'Amount');
+            (amount as any), 'Amount');
         }
         if (isYape !== undefined && isYape !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            <any>isYape, 'IsYape');
+            (isYape as any), 'IsYape');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -326,12 +325,12 @@ export class PaymentService {
             }
         }
 
-        let localVarPath = `/api/Payment/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
+        const localVarPath = `/api/Payment/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
         return this.httpClient.request<Payment>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
-                responseType: <any>responseType_,
+                responseType: responseType_ as any,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -349,7 +348,7 @@ export class PaymentService {
     public apiPaymentPost(newPaymentDto?: NewPaymentDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<PaymentDto>;
     public apiPaymentPost(newPaymentDto?: NewPaymentDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<PaymentDto>>;
     public apiPaymentPost(newPaymentDto?: NewPaymentDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<PaymentDto>>;
-    public apiPaymentPost(newPaymentDto?: NewPaymentDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiPaymentPost(newPaymentDto?: NewPaymentDto, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -407,12 +406,12 @@ export class PaymentService {
             }
         }
 
-        let localVarPath = `/api/Payment`;
+        const localVarPath = `/api/Payment`;
         return this.httpClient.request<PaymentDto>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: newPaymentDto,
-                responseType: <any>responseType_,
+                responseType: responseType_ as any,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,

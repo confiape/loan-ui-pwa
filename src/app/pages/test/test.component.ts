@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {LoanService} from '../../core/services/openapi';
 
 @Component({
@@ -7,12 +7,9 @@ import {LoanService} from '../../core/services/openapi';
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
 })
-export class TestComponent implements OnInit{
-  constructor(private _loanService:LoanService) {
+export class TestComponent {
+  constructor(private _loanService: LoanService) {
   }
-    ngOnInit(): void {
-
-    }
 
 
   buttonHandl() {

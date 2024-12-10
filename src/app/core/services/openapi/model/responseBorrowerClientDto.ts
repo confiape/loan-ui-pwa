@@ -13,8 +13,8 @@ import { BorrowerClientDto } from './borrowerClientDto';
 
 
 export interface ResponseBorrowerClientDto { 
-    tagDto?: Array<TagDto> | null;
+    tagDto?: TagDto[] | null;
     borrowerClientDto?: BorrowerClientDto;
-    basicLoanInformation?: Array<BasicLoanInformation> | null;
+    basicLoanInformation?: BasicLoanInformation[] | null;
 }
 

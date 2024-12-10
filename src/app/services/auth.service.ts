@@ -16,10 +16,14 @@ export class AuthService {
 
   checkAuth(): Observable<boolean> {
     if (this.isAuthenticated$.value) {
+      console.log("true gg")
       return of(true);
     }
     return this.authenticateService.apiAuthenticateIsAuthenticatedGet().pipe(
-      tap((auth) => this.isAuthenticated$.next(auth)),
+      tap((auth) => {
+        console.log(auth+"ggg")
+        return this.isAuthenticated$.next(auth)
+      }),
       catchError(() => {
         this.isAuthenticated$.next(false);
         return of(false);
@@ -29,6 +33,7 @@ export class AuthService {
 
   getToken(): Observable<string | null> {
     if (this.token) {
+      console.log(this.token+"gg")
       return of(this.token);
     }
     return this.authenticateService.apiAuthenticateGetAuthorizationTokenPost().pipe(
@@ -43,6 +48,7 @@ export class AuthService {
 
   cleanToken(): void {
     this.token = null;
+    this.isAuthenticated$.next(false)
   }
 
   logout(): void {
@@ -50,7 +56,6 @@ export class AuthService {
       .pipe(
         tap(() => {
           this.cleanToken()
-          this.isAuthenticated$.next(false)
           this.router.navigate(['/login']).then();
         }),
       )

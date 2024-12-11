@@ -1,4 +1,4 @@
-export interface Client {
+export interface  Client {
   id: number,
   name: string,
   loans: Loan[]

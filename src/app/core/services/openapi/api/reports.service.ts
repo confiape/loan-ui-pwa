@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+/* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
@@ -99,7 +100,7 @@ export class ReportsService {
     public apiReportsGetLoanReportLoanIdGet(loanId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Blob>;
     public apiReportsGetLoanReportLoanIdGet(loanId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Blob>>;
     public apiReportsGetLoanReportLoanIdGet(loanId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Blob>>;
-    public apiReportsGetLoanReportLoanIdGet(loanId: string, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiReportsGetLoanReportLoanIdGet(loanId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (loanId === null || loanId === undefined) {
             throw new Error('Required parameter loanId was null or undefined when calling apiReportsGetLoanReportLoanIdGet.');
         }
@@ -138,7 +139,7 @@ export class ReportsService {
         }
 
 
-        const localVarPath = `/api/Reports/GetLoanReport/${this.configuration.encodeParam({name: "loanId", value: loanId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
+        let localVarPath = `/api/Reports/GetLoanReport/${this.configuration.encodeParam({name: "loanId", value: loanId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
         return this.httpClient.request('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -159,7 +160,7 @@ export class ReportsService {
     public apiReportsGetReportToReviewGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Blob>;
     public apiReportsGetReportToReviewGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Blob>>;
     public apiReportsGetReportToReviewGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Blob>>;
-    public apiReportsGetReportToReviewGet(observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiReportsGetReportToReviewGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -195,7 +196,7 @@ export class ReportsService {
         }
 
 
-        const localVarPath = `/api/Reports/GetReportToReview`;
+        let localVarPath = `/api/Reports/GetReportToReview`;
         return this.httpClient.request('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -217,12 +218,12 @@ export class ReportsService {
     public apiReportsReportPaymentByDayGet(dateTime?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<ReportPaymentByDayDto>;
     public apiReportsReportPaymentByDayGet(dateTime?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ReportPaymentByDayDto>>;
     public apiReportsReportPaymentByDayGet(dateTime?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ReportPaymentByDayDto>>;
-    public apiReportsReportPaymentByDayGet(dateTime?: string, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiReportsReportPaymentByDayGet(dateTime?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (dateTime !== undefined && dateTime !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            (dateTime as any), 'dateTime');
+            <any>dateTime, 'dateTime');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -270,12 +271,12 @@ export class ReportsService {
             }
         }
 
-        const localVarPath = `/api/Reports/ReportPaymentByDay`;
+        let localVarPath = `/api/Reports/ReportPaymentByDay`;
         return this.httpClient.request<ReportPaymentByDayDto>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
-                responseType: responseType_ as any,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -293,12 +294,12 @@ export class ReportsService {
     public apiReportsReportPaymentByLoanGet(loanId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<ReportPaymentByLoanDto>;
     public apiReportsReportPaymentByLoanGet(loanId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ReportPaymentByLoanDto>>;
     public apiReportsReportPaymentByLoanGet(loanId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ReportPaymentByLoanDto>>;
-    public apiReportsReportPaymentByLoanGet(loanId?: string, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiReportsReportPaymentByLoanGet(loanId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (loanId !== undefined && loanId !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            (loanId as any), 'loanId');
+            <any>loanId, 'loanId');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -346,12 +347,12 @@ export class ReportsService {
             }
         }
 
-        const localVarPath = `/api/Reports/ReportPaymentByLoan`;
+        let localVarPath = `/api/Reports/ReportPaymentByLoan`;
         return this.httpClient.request<ReportPaymentByLoanDto>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
-                responseType: responseType_ as any,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,

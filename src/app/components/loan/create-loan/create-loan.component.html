@@ -1,6 +1,9 @@
 <app-dynamic-form
   [fields]="fields"
   [value]="{}"
-  [title]="'Nuevo   prestamo para '+name()"
-  [isModal]="false"
-></app-dynamic-form>
+  [title]="'Nuevo   prestamo para '+name()+'('+title()+')'"
+  [isModal]="true"
+>
+  <ng-content></ng-content>
+</app-dynamic-form>
+

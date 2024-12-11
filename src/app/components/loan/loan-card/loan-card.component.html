@@ -1,9 +1,10 @@
-<div class="w-full mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-transform duration-300 hover:scale-[1.02] my-4">
-  <div class="p-6">
+
+<div class="w-full mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-transform duration-300 hover:scale-[1.02] ">
+  <div class="p-2">
     <div class="flex justify-between items-start mb-4">
       <div class="flex-1 flex items-center">
         <h2 class="text-xl font-semibold text-gray-800" id="loanTitle">
-          {{ client().name }} #{{ client().id }}
+          {{client().title}} - {{ client().name }}
           <span class="inline-flex items-center px-3 py-1 mt-2 text-sm rounded-full"
                 [ngClass]="getStatusClass()">{{ 'active' }}
           </span>
@@ -18,7 +19,7 @@
     </div>
     <div class="relative">
       <div class="flex flex-row w-full gap-4 items-center overflow-x-auto pb-4">
-        @for (loan of client().loans; track client().id) {
+        @for (loan of client().loans; track loan.id) {
           <button class="flex-shrink-0" (click)="viewLoanDetails(loan)">
             <div [ngClass]="{
               'border-red-500': loan.status === 'overdue',
@@ -27,7 +28,7 @@
               <p class="text-lg text-gray-600">
                 {{ loan.amount | currency }}
               </p>
-              <p class="text-lg font-semibold text-gray-900">{{ loan.date | date :"dd MMM" }}</p>
+              <p class="text-lg font-semibold text-gray-900">{{ loan.dateTime | date :"dd MMM" }}</p>
               <div class="relative pt-1">
                 <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
                   <div [style.width.%]="loan.progressPercentage"
@@ -38,13 +39,20 @@
           </button>
         }
       </div>
-      <button (click)="createLoan()"
-              class="absolute right-0 top-1/2 -translate-y-1/2 p-2 bg-white rounded-full shadow-md text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out"
-              aria-label="Add new loan">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-        </svg>
-      </button>
+      <app-create-loan
+      [name]="client().name??''"
+      [title]="client().title??''"
+      [borrowerClientId]="client().id??''"
+      >
+        <button
+                class="absolute right-0 top-1/2 -translate-y-1/2 p-2 bg-white rounded-full shadow-md text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out"
+                aria-label="Add new loan">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+        </button>
+      </app-create-loan>
+
     </div>
   </div>
 </div>

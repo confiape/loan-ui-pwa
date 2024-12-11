@@ -29,13 +29,10 @@ export class DynamicFormComponent {
   }
 
   openModal(): void {
-    // const dialogRef = this.dialog.open(DynamicFormBodyComponent, {
-    //   data: {fields: this.fields(), value: this.value()},
-    //   panelClass: 'custom-modal'
-    // });
-
+    console.log(this.fields())
+    console.log(this.title())
     const dialogRef = this.dialog.open(DynamicFormBodyComponent, {
-      data: { fields: this.fields(), value: this.value() },
+      data: { fields: this.fields(), value: this.value() ,title: this.title() },
       height: '90vh',
     });
     dialogRef.afterClosed().subscribe((result) => {

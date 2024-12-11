@@ -7,29 +7,26 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { TagBorrowerClient } from './tagBorrowerClient';
-import { Loan } from './loan';
+import { LoanDtoAndPayments } from './loanDtoAndPayments';
+import { Tag } from './tag';
 
 
-export interface BorrowerClient { 
+export interface BorrowerClientDtoWithActiveLoans { 
     id?: string;
-    changeBy?: string;
-    changeDate?: string;
-    isDeleted?: boolean;
     avatar?: string | null;
     background?: string | null;
-    name: string;
+    name?: string | null;
     dni?: string | null;
     dniPath?: string | null;
     email?: string | null;
     phoneNumber?: string | null;
-    title: string;
+    title?: string | null;
     company?: string | null;
     birthday?: string | null;
     address?: string | null;
     notes?: string | null;
     status?: string | null;
-    loans?: Array<Loan> | null;
-    tagBorrowerClients?: Array<TagBorrowerClient> | null;
+    loans?: Array<LoanDtoAndPayments> | null;
+    tags?: Array<Tag> | null;
 }
 

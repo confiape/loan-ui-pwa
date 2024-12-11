@@ -8,17 +8,23 @@
  * Do not edit the class manually.
  */
 import { LoanType } from './loanType';
+import { SimplePayments } from './simplePayments';
 
 
-export interface CreateLoanDto { 
+export interface LoanDtoAndPayments { 
+    id?: string;
     amount?: number;
     interest?: number;
+    dateTime?: string;
     numberDate?: number;
     loanType?: LoanType;
-    suggestedDays?: Array<string> | null;
-    borrowerClientId?: string;
+    totalPayment?: number;
+    totalAmount?: number;
+    payments?: Array<SimplePayments> | null;
+    status?: string | null;
+    progressPercentage?: number;
 }
-export namespace CreateLoanDto {
+export namespace LoanDtoAndPayments {
 }
 
 

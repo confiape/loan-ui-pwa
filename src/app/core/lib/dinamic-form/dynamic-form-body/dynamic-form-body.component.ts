@@ -1,4 +1,4 @@
-import {Component, Inject, input, OnInit, Optional, output,} from '@angular/core';
+import {ChangeDetectorRef, Component, Inject, input, OnInit, Optional, output,} from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {NgForOf, NgIf, NgSwitch, NgSwitchCase} from '@angular/common';
@@ -49,26 +49,31 @@ export class DynamicFormBodyComponent implements OnInit {
   isModal = false;
 
   constructor(
+    private ref: ChangeDetectorRef,
     private fb: FormBuilder,
     @Optional() private dialogRef?: MatDialogRef<DynamicFormBodyComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data?: { fields: Field[]; value: any }
+    @Optional() @Inject(MAT_DIALOG_DATA) public data?: { fields: Field[]; value: any; title: string }
   ) {
 
   }
 
   ngOnInit(): void {
+
     this.isModal = !!this.dialogRef;
 
     if (this.isModal && this.data) {
       this.fields = this.data?.fields;
       this.value = this.data?.value;
+      this.title=this.data?.title;
     }
     if (!this.isModal) {
       this.fields = this.fieldsInput() ?? [];
       this.value = this.valueInput() ?? {};
       this.title = this.titleInput() ?? ""
+
     }
     this.buildForm();
+    this.ref.detectChanges()
 
   }
 

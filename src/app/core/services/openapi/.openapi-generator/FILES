@@ -26,11 +26,13 @@ model/basicLoanInformation.ts
 model/borrowerClient.ts
 model/borrowerClientDto.ts
 model/borrowerClientDtoNewBorrowerClientDto.ts
+model/borrowerClientDtoWithActiveLoans.ts
 model/completeLoanDto.ts
 model/countryDto.ts
 model/createLoanDto.ts
 model/loan.ts
 model/loanAndDate.ts
+model/loanDtoAndPayments.ts
 model/loanType.ts
 model/loansByMonthDto.ts
 model/loansByMonthDtoMetadata.ts

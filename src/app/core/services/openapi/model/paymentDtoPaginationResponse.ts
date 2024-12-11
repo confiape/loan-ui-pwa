@@ -13,8 +13,8 @@ import { PaymentDto } from './paymentDto';
 export interface PaymentDtoPaginationResponse { 
     pageSize?: number;
     currentPage?: number;
-    orderBy?: string[] | null;
+    orderBy?: Array<string> | null;
     totalItems?: number;
-    result?: PaymentDto[] | null;
+    result?: Array<PaymentDto> | null;
 }
 

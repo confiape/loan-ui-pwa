@@ -12,6 +12,6 @@ import { LoansByMonthDto } from './loansByMonthDto';
 
 export interface LoansByMonthDtoMetadata { 
     name?: string | null;
-    data?: LoansByMonthDto[] | null;
+    data?: Array<LoansByMonthDto> | null;
 }
 

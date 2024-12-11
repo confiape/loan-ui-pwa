@@ -7,6 +7,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+/* tslint:disable:no-unused-variable member-ordering */
 
 import { Inject, Injectable, Optional }                      from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams,
@@ -23,6 +24,8 @@ import { BasicBorrowerClientWithTagsPaginationResponse } from '../model/basicBor
 import { BorrowerClientDto } from '../model/borrowerClientDto';
 // @ts-ignore
 import { BorrowerClientDtoNewBorrowerClientDto } from '../model/borrowerClientDtoNewBorrowerClientDto';
+// @ts-ignore
+import { BorrowerClientDtoWithActiveLoans } from '../model/borrowerClientDtoWithActiveLoans';
 // @ts-ignore
 import { ResponseBorrowerClientDto } from '../model/responseBorrowerClientDto';
 // @ts-ignore
@@ -106,24 +109,24 @@ export class BorrowerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiBorrowerGet(pageSize?: number, currentPage?: number, orderBy?: string[], observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<BasicBorrowerClientWithTagsPaginationResponse>;
-    public apiBorrowerGet(pageSize?: number, currentPage?: number, orderBy?: string[], observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BasicBorrowerClientWithTagsPaginationResponse>>;
-    public apiBorrowerGet(pageSize?: number, currentPage?: number, orderBy?: string[], observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BasicBorrowerClientWithTagsPaginationResponse>>;
-    public apiBorrowerGet(pageSize?: number, currentPage?: number, orderBy?: string[], observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiBorrowerGet(pageSize?: number, currentPage?: number, orderBy?: Array<string>, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<BasicBorrowerClientWithTagsPaginationResponse>;
+    public apiBorrowerGet(pageSize?: number, currentPage?: number, orderBy?: Array<string>, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BasicBorrowerClientWithTagsPaginationResponse>>;
+    public apiBorrowerGet(pageSize?: number, currentPage?: number, orderBy?: Array<string>, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BasicBorrowerClientWithTagsPaginationResponse>>;
+    public apiBorrowerGet(pageSize?: number, currentPage?: number, orderBy?: Array<string>, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
         if (pageSize !== undefined && pageSize !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            (pageSize as any), 'PageSize');
+            <any>pageSize, 'PageSize');
         }
         if (currentPage !== undefined && currentPage !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-            (currentPage as any), 'CurrentPage');
+            <any>currentPage, 'CurrentPage');
         }
         if (orderBy) {
             orderBy.forEach((element) => {
                 localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
-                  (element as any), 'OrderBy');
+                  <any>element, 'OrderBy');
             })
         }
 
@@ -172,12 +175,12 @@ export class BorrowerService {
             }
         }
 
-        const localVarPath = `/api/Borrower`;
+        let localVarPath = `/api/Borrower`;
         return this.httpClient.request<BasicBorrowerClientWithTagsPaginationResponse>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
-                responseType: responseType_ as any,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -188,13 +191,20 @@ export class BorrowerService {
     }
 
     /**
+     * @param borrowerClientId 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public apiBorrowerGetAllWithLoansGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<BasicBorrowerClientWithTagsAndLoans[]>;
-    public apiBorrowerGetAllWithLoansGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BasicBorrowerClientWithTagsAndLoans[]>>;
-    public apiBorrowerGetAllWithLoansGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BasicBorrowerClientWithTagsAndLoans[]>>;
-    public apiBorrowerGetAllWithLoansGet(observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiBorrowerGetAByIdWithActiveLoansGet(borrowerClientId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<BorrowerClientDtoWithActiveLoans>;
+    public apiBorrowerGetAByIdWithActiveLoansGet(borrowerClientId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BorrowerClientDtoWithActiveLoans>>;
+    public apiBorrowerGetAByIdWithActiveLoansGet(borrowerClientId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BorrowerClientDtoWithActiveLoans>>;
+    public apiBorrowerGetAByIdWithActiveLoansGet(borrowerClientId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (borrowerClientId !== undefined && borrowerClientId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>borrowerClientId, 'borrowerClientId');
+        }
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -241,11 +251,148 @@ export class BorrowerService {
             }
         }
 
-        const localVarPath = `/api/Borrower/GetAllWithLoans`;
-        return this.httpClient.request<BasicBorrowerClientWithTagsAndLoans[]>('get', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/api/Borrower/GetAByIdWithActiveLoans`;
+        return this.httpClient.request<BorrowerClientDtoWithActiveLoans>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: responseType_ as any,
+                params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public apiBorrowerGetAllWithActiveLoansGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<BorrowerClientDtoWithActiveLoans>>;
+    public apiBorrowerGetAllWithActiveLoansGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<BorrowerClientDtoWithActiveLoans>>>;
+    public apiBorrowerGetAllWithActiveLoansGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<BorrowerClientDtoWithActiveLoans>>>;
+    public apiBorrowerGetAllWithActiveLoansGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (Bearer) required
+        localVarCredential = this.configuration.lookupCredential('Bearer');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'text/plain',
+                'application/json',
+                'text/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+        let localVarTransferCache: boolean | undefined = options && options.transferCache;
+        if (localVarTransferCache === undefined) {
+            localVarTransferCache = true;
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/api/Borrower/GetAllWithActiveLoans`;
+        return this.httpClient.request<Array<BorrowerClientDtoWithActiveLoans>>('get', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                transferCache: localVarTransferCache,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public apiBorrowerGetAllWithLoansGet(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<Array<BasicBorrowerClientWithTagsAndLoans>>;
+    public apiBorrowerGetAllWithLoansGet(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<Array<BasicBorrowerClientWithTagsAndLoans>>>;
+    public apiBorrowerGetAllWithLoansGet(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<Array<BasicBorrowerClientWithTagsAndLoans>>>;
+    public apiBorrowerGetAllWithLoansGet(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (Bearer) required
+        localVarCredential = this.configuration.lookupCredential('Bearer');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'text/plain',
+                'application/json',
+                'text/json'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+        let localVarTransferCache: boolean | undefined = options && options.transferCache;
+        if (localVarTransferCache === undefined) {
+            localVarTransferCache = true;
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/api/Borrower/GetAllWithLoans`;
+        return this.httpClient.request<Array<BasicBorrowerClientWithTagsAndLoans>>('get', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -263,7 +410,7 @@ export class BorrowerService {
     public apiBorrowerIdDelete(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<boolean>;
     public apiBorrowerIdDelete(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<boolean>>;
     public apiBorrowerIdDelete(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<boolean>>;
-    public apiBorrowerIdDelete(id: string, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiBorrowerIdDelete(id: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling apiBorrowerIdDelete.');
         }
@@ -313,11 +460,11 @@ export class BorrowerService {
             }
         }
 
-        const localVarPath = `/api/Borrower/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
+        let localVarPath = `/api/Borrower/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
         return this.httpClient.request<boolean>('delete', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: responseType_ as any,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -335,7 +482,7 @@ export class BorrowerService {
     public apiBorrowerIdGet(id: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<ResponseBorrowerClientDto>;
     public apiBorrowerIdGet(id: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<ResponseBorrowerClientDto>>;
     public apiBorrowerIdGet(id: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<ResponseBorrowerClientDto>>;
-    public apiBorrowerIdGet(id: string, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiBorrowerIdGet(id: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling apiBorrowerIdGet.');
         }
@@ -385,11 +532,11 @@ export class BorrowerService {
             }
         }
 
-        const localVarPath = `/api/Borrower/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
+        let localVarPath = `/api/Borrower/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
         return this.httpClient.request<ResponseBorrowerClientDto>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
-                responseType: responseType_ as any,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -408,7 +555,7 @@ export class BorrowerService {
     public apiBorrowerIdPut(id: string, updateBorrowerClientDtoNewBorrowerClientDto?: UpdateBorrowerClientDtoNewBorrowerClientDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any>;
     public apiBorrowerIdPut(id: string, updateBorrowerClientDtoNewBorrowerClientDto?: UpdateBorrowerClientDtoNewBorrowerClientDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<any>>;
     public apiBorrowerIdPut(id: string, updateBorrowerClientDtoNewBorrowerClientDto?: UpdateBorrowerClientDtoNewBorrowerClientDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<any>>;
-    public apiBorrowerIdPut(id: string, updateBorrowerClientDtoNewBorrowerClientDto?: UpdateBorrowerClientDtoNewBorrowerClientDto, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiBorrowerIdPut(id: string, updateBorrowerClientDtoNewBorrowerClientDto?: UpdateBorrowerClientDtoNewBorrowerClientDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext, transferCache?: boolean}): Observable<any> {
         if (id === null || id === undefined) {
             throw new Error('Required parameter id was null or undefined when calling apiBorrowerIdPut.');
         }
@@ -466,12 +613,12 @@ export class BorrowerService {
             }
         }
 
-        const localVarPath = `/api/Borrower/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
+        let localVarPath = `/api/Borrower/${this.configuration.encodeParam({name: "id", value: id, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}`;
         return this.httpClient.request<any>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: updateBorrowerClientDtoNewBorrowerClientDto,
-                responseType: responseType_ as any,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,
@@ -489,7 +636,7 @@ export class BorrowerService {
     public apiBorrowerPost(borrowerClientDtoNewBorrowerClientDto?: BorrowerClientDtoNewBorrowerClientDto, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<BorrowerClientDto>;
     public apiBorrowerPost(borrowerClientDtoNewBorrowerClientDto?: BorrowerClientDtoNewBorrowerClientDto, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpResponse<BorrowerClientDto>>;
     public apiBorrowerPost(borrowerClientDtoNewBorrowerClientDto?: BorrowerClientDtoNewBorrowerClientDto, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<HttpEvent<BorrowerClientDto>>;
-    public apiBorrowerPost(borrowerClientDtoNewBorrowerClientDto?: BorrowerClientDtoNewBorrowerClientDto, observe: any = 'body', reportProgress = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
+    public apiBorrowerPost(borrowerClientDtoNewBorrowerClientDto?: BorrowerClientDtoNewBorrowerClientDto, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'text/plain' | 'application/json' | 'text/json', context?: HttpContext, transferCache?: boolean}): Observable<any> {
 
         let localVarHeaders = this.defaultHeaders;
 
@@ -547,12 +694,12 @@ export class BorrowerService {
             }
         }
 
-        const localVarPath = `/api/Borrower`;
+        let localVarPath = `/api/Borrower`;
         return this.httpClient.request<BorrowerClientDto>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: borrowerClientDtoNewBorrowerClientDto,
-                responseType: responseType_ as any,
+                responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,
                 observe: observe,

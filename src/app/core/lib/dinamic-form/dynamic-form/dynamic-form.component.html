@@ -1,13 +1,8 @@
-<div *ngIf="isModal(); else directForm" class="flex justify-end">
-  <button
-    mat-raised-button
-    color="primary"
-    class="px-4 py-2"
-    (click)="openModal()"
-  >
-    Open Form
-  </button>
-</div>
+<ng-container *ngIf="isModal(); else directForm">
+  <div (click)="openModal()">
+    <ng-content></ng-content>
+  </div>
+</ng-container>
 
 <ng-template #directForm>
   <app-dynamic-form-body

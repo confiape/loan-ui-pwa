@@ -1,6 +1,10 @@
-import {Component, input, output} from '@angular/core';
+import {Component, inject, input, OnInit, output} from '@angular/core';
 import {CurrencyPipe, DatePipe, NgClass} from '@angular/common';
-import {Loan, Client} from '../loan-card.component.models';
+import {BorrowerClientDtoWithActiveLoans, LoanDtoAndPayments} from '../../../core/services/openapi';
+import {MatDialog} from '@angular/material/dialog';
+import {CreateLoanComponent} from '../create-loan/create-loan.component';
+import {BorrowersStateService} from '../../../services/borrowers-state.service';
+import {LoanDetailComponent} from '../loan-detail/loan-detail.component';
 
 
 @Component({
@@ -8,15 +12,26 @@ import {Loan, Client} from '../loan-card.component.models';
   imports: [
     NgClass,
     CurrencyPipe,
-    DatePipe
+    DatePipe,
+    CreateLoanComponent
   ],
   templateUrl: './loan-card.component.html'
 })
-export class LoanCardComponent {
-  client = input.required<Client>();
+export class LoanCardComponent implements OnInit {
+  readonly dialog = inject(MatDialog);
 
-  editedClient = output<Client>()
-  viewedLoanDetails = output<Loan>()
+
+  ngOnInit(): void {
+    this._borrowersStateService.setBorrowerClient(this.client());
+  }
+
+  client = input.required<BorrowerClientDtoWithActiveLoans>();
+
+  readonly _dialog = inject(MatDialog);
+  readonly _borrowersStateService = inject(BorrowersStateService);
+
+  editedBorrowerClient = output<BorrowerClientDtoWithActiveLoans>()
+
   createdLoan = output()
 
   getStatusClass(): string {
@@ -29,16 +44,17 @@ export class LoanCardComponent {
   }
 
 
-  createLoan(): void {
-    this.createdLoan.emit()
-  }
-
   editClient() {
-    this.editedClient.emit(this.client())
+    this.editedBorrowerClient.emit(this.client())
   }
 
-  viewLoanDetails(loan:Loan) {
-    this.viewedLoanDetails.emit(loan);
+  viewLoanDetails(loan: LoanDtoAndPayments) {
+    const dialogRef = this.dialog.open(LoanDetailComponent, {
+      data: {
+        loan: loan,
+        name: this.client().name,
+      },
+    });
   }
 }
 

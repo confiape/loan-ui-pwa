@@ -16,6 +16,6 @@ export interface Tag {
     changeDate?: string;
     isDeleted?: boolean;
     title?: string | null;
-    person?: TagBorrowerClient[] | null;
+    person?: Array<TagBorrowerClient> | null;
 }
 

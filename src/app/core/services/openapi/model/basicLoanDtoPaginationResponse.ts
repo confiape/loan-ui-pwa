@@ -13,8 +13,8 @@ import { BasicLoanDto } from './basicLoanDto';
 export interface BasicLoanDtoPaginationResponse { 
     pageSize?: number;
     currentPage?: number;
-    orderBy?: string[] | null;
+    orderBy?: Array<string> | null;
     totalItems?: number;
-    result?: BasicLoanDto[] | null;
+    result?: Array<BasicLoanDto> | null;
 }
 

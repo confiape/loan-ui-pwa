@@ -13,6 +13,6 @@ import { ReportPaymentsDto } from './reportPaymentsDto';
 export interface ReportPaymentByDayDto { 
     dateTime?: string;
     totalPayment?: number;
-    detailsDto?: ReportPaymentsDto[] | null;
+    detailsDto?: Array<ReportPaymentsDto> | null;
 }
 

@@ -20,7 +20,7 @@ export interface BasicLoanDto {
     total?: number;
     totalDebt?: number;
     name?: string | null;
-    tags?: string[] | null;
+    tags?: Array<string> | null;
     paymentToday?: number;
     location?: PointDto;
 }

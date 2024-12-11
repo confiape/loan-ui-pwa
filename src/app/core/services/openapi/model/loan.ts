@@ -23,10 +23,10 @@ export interface Loan {
     dateTime?: string;
     numberDate?: number;
     loanType?: LoanType;
-    suggestedDays?: string[] | null;
+    suggestedDays?: Array<string> | null;
     borrowerClientId?: string;
     borrowerClient?: BorrowerClient;
-    payments?: Payment[] | null;
+    payments?: Array<Payment> | null;
     currentLocation?: PointDto;
 }
 export namespace Loan {

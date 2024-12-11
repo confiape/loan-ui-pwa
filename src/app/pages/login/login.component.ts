@@ -44,7 +44,7 @@ export class LoginComponent implements AfterViewInit {
       accessToken: jwtToken
     }).subscribe({
       next: () => {
-        this.router.navigate(['/home']).then();
+        this.router.navigate(['/loan']).then();
       }
     })
   }

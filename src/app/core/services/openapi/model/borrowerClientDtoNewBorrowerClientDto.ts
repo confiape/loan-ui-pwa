@@ -12,6 +12,6 @@ import { BorrowerClientDto } from './borrowerClientDto';
 
 export interface BorrowerClientDtoNewBorrowerClientDto { 
     borrowerClientDto?: BorrowerClientDto;
-    tagIdList?: string[] | null;
+    tagIdList?: Array<string> | null;
 }
 

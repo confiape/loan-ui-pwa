@@ -13,8 +13,8 @@ import { BasicBorrowerClientWithTags } from './basicBorrowerClientWithTags';
 export interface BasicBorrowerClientWithTagsPaginationResponse { 
     pageSize?: number;
     currentPage?: number;
-    orderBy?: string[] | null;
+    orderBy?: Array<string> | null;
     totalItems?: number;
-    result?: BasicBorrowerClientWithTags[] | null;
+    result?: Array<BasicBorrowerClientWithTags> | null;
 }
 

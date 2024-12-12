@@ -1,20 +1,22 @@
+@use "../variables";
+
 // for radius
 
   .mdc-text-field--outlined {
     .mdc-notched-outline__leading,
     .mdc-notched-outline__trailing,
     .mdc-notched-outline__notch {
-      border-color: $borderColor;
+      border-color: variables.$borderColor;
     }
 
     .mdc-notched-outline .mdc-notched-outline__leading {
-      border-top-left-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
+      border-top-left-radius: variables.$border-radius;
+      border-bottom-left-radius: variables.$border-radius;
     }
 
     .mdc-notched-outline .mdc-notched-outline__trailing {
-      border-top-right-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
+      border-top-right-radius: variables.$border-radius;
+      border-bottom-right-radius: variables.$border-radius;
     }
   }
 

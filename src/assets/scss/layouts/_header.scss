@@ -1,9 +1,11 @@
+@use "../variables";
+
 html .topbar {
-  background-color: $toolbar;
+  background-color: variables.$toolbar;
   position: sticky;
   top: 0;
   z-index: 9;
-  height: $header-height;
+  height: variables.$header-height;
 }
 
 .topbar-dd {
@@ -21,8 +23,8 @@ html .topbar {
 
 .upgrade-bg {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   height: 100%;
 }
 

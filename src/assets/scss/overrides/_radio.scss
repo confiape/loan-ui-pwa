@@ -1,3 +1,5 @@
+@use "../variables";
+
 .mdc-radio__outer-circle {
   border-width: 1px;
 }
@@ -7,7 +9,7 @@
   .mdc-radio__native-control:enabled:not(:checked)
   + .mdc-radio__background
   .mdc-radio__outer-circle {
-  border-color: $borderColor;
+  border-color: variables.$borderColor;
 }
 
 .mat-mdc-radio-button
@@ -23,5 +25,5 @@
   .mdc-radio__native-control:enabled
   + .mdc-radio__background
   .mdc-radio__inner-circle {
-  border-color: $white;
+  border-color: variables.$white;
 }

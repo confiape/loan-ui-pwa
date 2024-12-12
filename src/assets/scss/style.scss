@@ -1,24 +1,26 @@
 @use "@angular/material" as mat;
+@use "sass:meta";
+@use "variables";
+@use "themecolors/default_theme";
+
 @include mat.core();
 
-@import "variables";
-@import "helpers/color";
-@import "helpers/icon-size";
+@include meta.load-css("helpers/color");
+@include meta.load-css("helpers/icon-size");
 
 //Theme colors
 
-@import "themecolors/default_theme";
-@include mat.all-component-themes($bluetheme);
+@include mat.all-component-themes(default_theme.$bluetheme);
 
 //container layout
-@import "overrides/materialoverrides";
-@import "container";
-@import "layouts/layouts";
-@import "grid/grid";
-@import "helpers/custom-flex";
-@import "helpers/index";
+@include meta.load-css("overrides/materialoverrides");
+@include meta.load-css("container");
+@include meta.load-css("layouts/layouts");
+@include meta.load-css("grid/grid");
+@include meta.load-css("helpers/custom-flex");
+@include meta.load-css("helpers/index");
 
 
 // pages
-@import "pages/dashboards";
-@import "pages/auth";
+@include meta.load-css("pages/dashboards");
+@include meta.load-css("pages/auth");

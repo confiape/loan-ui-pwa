@@ -1,3 +1,5 @@
+@use "variables";
+
 *,
 :after,
 :before {
@@ -5,15 +7,15 @@
 }
 
 body {
-  font-family: $font-family;
-  color: $textPrimary;
+  font-family: variables.$font-family;
+  color: variables.$textPrimary;
   font-size: 14px;
   line-height: 1.334rem;
   overflow-x: hidden;
 }
 
 html .mat-drawer-container {
-  background-color: $white;
+  background-color: variables.$white;
 }
 
 .mainWrapper {
@@ -30,7 +32,7 @@ html .mat-drawer-container {
 
   margin: 0 auto;
   &.maxWidth {
-    max-width: $boxedWidth;
+    max-width: variables.$boxedWidth;
   }
 }
 
@@ -47,7 +49,7 @@ html .mat-drawer-container {
 }
 
 .rounded {
-  border-radius: $border-radius !important;
+  border-radius: variables.$border-radius !important;
 }
 
 .rounded-circle {
@@ -101,7 +103,7 @@ html .mat-drawer-container {
 
 .text-hover-primary:hover {
   .hover-text {
-    color: $primary;
+    color: variables.$primary;
   }
 }
 

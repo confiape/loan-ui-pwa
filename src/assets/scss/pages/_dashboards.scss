@@ -1,3 +1,5 @@
+@use "../variables";
+
 // theme select
 .theme-select {
   width: 125px;
@@ -12,15 +14,15 @@
   }
 
   .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading {
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
-    border-color: $borderColor;
+    border-top-left-radius: variables.$border-radius;
+    border-bottom-left-radius: variables.$border-radius;
+    border-color: variables.$borderColor;
   }
 
   .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing {
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
-    border-color: $borderColor;
+    border-top-right-radius: variables.$border-radius;
+    border-bottom-right-radius: variables.$border-radius;
+    border-color: variables.$borderColor;
   }
 
   .mat-mdc-form-field-flex {
@@ -49,7 +51,7 @@
     .timline-border {
       width: 1px;
       height: 100%;
-      background-color: $borderColor;
+      background-color: variables.$borderColor;
       flex-shrink: 0;
     }
 
@@ -68,30 +70,30 @@
         flex-shrink: 0;
 
         &.border-primary {
-          border: 2px solid $primary !important;
+          border: 2px solid variables.$primary !important;
         }
 
         &.border-accent {
-          border: 2px solid $accent !important;
+          border: 2px solid variables.$accent !important;
         }
 
         &.border-success {
-          border: 2px solid $success;
+          border: 2px solid variables.$success;
         }
 
         &.border-warning {
-          border: 2px solid $warning;
+          border: 2px solid variables.$warning;
         }
 
         &.border-error {
-          border: 2px solid $error;
+          border: 2px solid variables.$error;
         }
       }
 
       .timeline-border {
         width: 1px;
         height: 100%;
-        background-color: $borderColor;
+        background-color: variables.$borderColor;
         flex-shrink: 0;
       }
     }

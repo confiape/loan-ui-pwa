@@ -1,3 +1,6 @@
+@use "sass:meta";
+@use "../variables";
+
 
 .light-theme .blue_theme,
 .light-theme .purple_theme,
@@ -6,24 +9,24 @@
 .light-theme .aqua_theme,
 .light-theme .cyan_theme,
 .dark-theme {
-  @import "./buttons";
-  @import "./drawer";
-  @import "./form";
-  @import "./checkbox";
-  @import "./radio";
+  @include meta.load-css("buttons");
+  @include meta.load-css("drawer");
+  @include meta.load-css("form");
+  @include meta.load-css("checkbox");
+  @include meta.load-css("radio");
 
   .topbar {
-    background-color: $toolbar;
+    background-color: variables.$toolbar;
   }
 }
 
 .light-theme,
 .dark-theme {
-  @import "./card";
-  @import "./typography";
+  @include meta.load-css("card");
+  @include meta.load-css("typography");
 }
 
-@import "./borderColor";
-@import "./table";
+@include meta.load-css("borderColor");
+@include meta.load-css("table");
 
-@import "./list";
+@include meta.load-css("list");

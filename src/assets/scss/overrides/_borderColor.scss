@@ -1,8 +1,10 @@
+@use "../variables";
+
 // theme
 .mat-drawer-side {
-  border-right: 1px solid $borderColor;
+  border-right: 1px solid variables.$borderColor;
 }
 
 .mat-divider {
-  border-top-color: $borderColor;
+  border-top-color: variables.$borderColor;
 }

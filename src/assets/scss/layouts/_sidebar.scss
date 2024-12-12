@@ -1,5 +1,7 @@
+@use "../variables";
+
 .mat-drawer.sidebarNav {
-  width: $sidenav-desktop;
+  width: variables.$sidenav-desktop;
   flex-shrink: 0;
   transition: swift-ease-out(width);
   position: absolute;
@@ -12,7 +14,7 @@
 
 .sidebarNav-mini {
   .sidebarNav {
-    width: $sidenav-mini;
+    width: variables.$sidenav-mini;
     .profile-bar {
       display: none;
     }
@@ -29,7 +31,7 @@
       }
     }
     &:hover {
-      width: $sidenav-desktop;
+      width: variables.$sidenav-desktop;
       .profile-bar {
         display: block;
       }
@@ -56,11 +58,11 @@
 
   .hideMenu {
     overflow: hidden;
-    width: $sidenav-mini;
+    width: variables.$sidenav-mini;
   }
 
   .branding {
-    width: $sidenav-mini - 15px;
+    width: variables.$sidenav-mini - 15px;
     overflow: hidden;
   }
 
@@ -82,7 +84,7 @@
 @media (min-width: 1024px) {
   .sidebarNav-mini {
     .contentWrapper {
-      margin-left: $sidenav-mini !important;
+      margin-left: variables.$sidenav-mini !important;
     }
   }
 }
@@ -132,11 +134,11 @@
       }
       &.activeMenu {
         .mdc-list-item__primary-text {
-          color: $white !important;
+          color: variables.$white !important;
         }
 
         .mat-mdc-list-item-icon {
-          color: $white !important;
+          color: variables.$white !important;
         }
       }
 
@@ -145,9 +147,9 @@
         margin-left: 0 !important;
         width: 20px;
         height: 20px;
-        line-height:0px;
+        line-height: 0;
         fill: transparent !important;
-        color: $textPrimary;
+        color: variables.$textPrimary;
       }
 
       .mdc-list-item__primary-text {

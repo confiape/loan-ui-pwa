@@ -1,6 +1,6 @@
 
-<div class="w-full mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-transform duration-300 hover:scale-[1.02] ">
-  <div class="p-2">
+<div class="w-full m-3 mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-transform duration-300 hover:scale-[1.02] ">
+  <div class="p-1">
     <div class="flex justify-between items-start mb-4">
       <div class="flex-1 flex items-center">
         <h2 class="text-xl font-semibold text-gray-800" id="loanTitle">
@@ -17,7 +17,7 @@
         </button>
       </div>
     </div>
-    <div class="relative">
+    <div class="flex flex-row justify-center align-items-center">
       <div class="flex flex-row w-full gap-4 items-center overflow-x-auto pb-4">
         @for (loan of client().loans; track loan.id) {
           <button class="flex-shrink-0" (click)="viewLoanDetails(loan)">
@@ -44,13 +44,8 @@
       [title]="client().title??''"
       [borrowerClientId]="client().id??''"
       >
-        <button
-                class="absolute right-0 top-1/2 -translate-y-1/2 p-2 bg-white rounded-full shadow-md text-blue-500 hover:text-blue-600 transition duration-300 ease-in-out"
-                aria-label="Add new loan">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-          </svg>
-        </button>
+        <i-tabler  style="height: 40px; width: 40px;" name="square-plus" matListItemIcon></i-tabler>
+
       </app-create-loan>
 
     </div>

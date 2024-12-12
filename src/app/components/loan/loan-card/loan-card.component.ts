@@ -5,6 +5,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {CreateLoanComponent} from '../create-loan/create-loan.component';
 import {BorrowersStateService} from '../../../services/borrowers-state.service';
 import {LoanDetailComponent} from '../loan-detail/loan-detail.component';
+import {MatListItemIcon} from '@angular/material/list';
+import {TablerIconComponent} from 'angular-tabler-icons';
 
 
 @Component({
@@ -13,7 +15,9 @@ import {LoanDetailComponent} from '../loan-detail/loan-detail.component';
     NgClass,
     CurrencyPipe,
     DatePipe,
-    CreateLoanComponent
+    CreateLoanComponent,
+    MatListItemIcon,
+    TablerIconComponent
   ],
   templateUrl: './loan-card.component.html'
 })
@@ -49,7 +53,7 @@ export class LoanCardComponent implements OnInit {
   }
 
   viewLoanDetails(loan: LoanDtoAndPayments) {
-    const dialogRef = this.dialog.open(LoanDetailComponent, {
+    this.dialog.open(LoanDetailComponent, {
       data: {
         loan: loan,
         name: this.client().name,

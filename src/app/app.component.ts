@@ -3,13 +3,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {BehaviorSubject, switchMap} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {RouterOutlet} from '@angular/router';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {FullComponent} from './layouts/full/full.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     FormsModule,
-    RouterOutlet
+    MatToolbarModule,
+    FullComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

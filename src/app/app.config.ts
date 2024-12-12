@@ -10,14 +10,20 @@ import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {authInterceptor} from './interceptors/auth.interceptor';
 import {BASE_PATH} from './core/services/openapi';
 import {authErrorInterceptor} from './interceptors/auth-error.interceptor';
+import {timeInterceptor} from './interceptors/time.interceptor';
+import {provideTablerIcons, TablerIconsModule} from 'angular-tabler-icons';
+import * as TablerIcons from 'angular-tabler-icons/icons';
+import {IconAdOff, IconHeartFilled, IconNumber123} from 'angular-tabler-icons/icons';
 
 registerLocaleData(localeEs, 'es');
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideExperimentalZonelessChangeDetection(),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([authInterceptor, authErrorInterceptor])),
+    provideHttpClient(withInterceptors([authInterceptor, authErrorInterceptor,timeInterceptor])),
+    provideTablerIcons(TablerIcons),
     {provide: BASE_PATH, useValue: ''},
     provideAnimationsAsync(),
     {

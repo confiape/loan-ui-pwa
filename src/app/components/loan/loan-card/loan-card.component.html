@@ -1,10 +1,9 @@
-
-<div class="w-full mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-transform duration-300 hover:scale-[1.02] ">
-  <div class="p-2">
-    <div class="flex justify-between items-start mb-4">
+<div class="w-full mx-auto border-gray-300  rounded-2xl shadow-md ">
+  <div class="p-1">
+    <div class="flex justify-between items-start mb-2">
       <div class="flex-1 flex items-center">
         <h2 class="text-xl font-semibold text-gray-800" id="loanTitle">
-          {{client().title}} - {{ client().name }}
+          {{client().title}}
           <span class="inline-flex items-center px-3 py-1 mt-2 text-sm rounded-full"
                 [ngClass]="getStatusClass()">{{ 'active' }}
           </span>
@@ -18,19 +17,19 @@
       </div>
     </div>
     <div class="relative">
-      <div class="flex flex-row w-full gap-4 items-center overflow-x-auto pb-4">
+      <div class="flex flex-row w-full gap-4 items-center overflow-x-auto pb-1">
         @for (loan of client().loans; track loan.id) {
           <button class="flex-shrink-0" (click)="viewLoanDetails(loan)">
             <div [ngClass]="{
               'border-red-500': loan.status === 'overdue',
               'border-green-500': loan.status !== 'overdue'
-            }" class="bg-gray-50 font-bold border-l-4 p-3 rounded-lg">
+            }" class="bg-gray-50 font-bold border-l-4 p-1 rounded-lg">
               <p class="text-lg text-gray-600">
                 {{ loan.amount | currency }}
               </p>
               <p class="text-lg font-semibold text-gray-900">{{ loan.dateTime | date :"dd MMM" }}</p>
               <div class="relative pt-1">
-                <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                <div class="overflow-hidden h-2 mb-1 text-xs flex rounded bg-blue-200">
                   <div [style.width.%]="loan.progressPercentage"
                        class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500 transition-all duration-500"></div>
                 </div>
